@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sarthak Job Portal — Find the right job you deserve.">
-    <title>Sarthak — Nepal's Job Portal</title>
+    <meta name="description" content="Job Portal — Find the right job you deserve.">
+    <title>Nepal's Job Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
@@ -239,7 +239,7 @@
                     <div class="lg:w-1/2 relative">
                         <div class="absolute -top-10 -right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
                         <div class="relative bg-gray-50 rounded-[2.5rem] p-4 border border-gray-100 shadow-2xl">
-                            <img src="${pageContext.request.contextPath}/images/hero-job-portal.png" alt="Sarthak Advantages" class="rounded-[2rem] w-full h-[400px] object-cover">
+                            <img src="${pageContext.request.contextPath}/images/hero-job-portal.png" alt="Job Portal Advantages" class="rounded-[2rem] w-full h-[400px] object-cover">
                             <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl border border-gray-50 flex items-center gap-4 animate-float">
                                 <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
@@ -431,28 +431,12 @@
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
                         </div>
                         <p class="text-gray-600 text-lg leading-relaxed mb-8 italic">
-                            "Sarthak helped me find my dream role at Microsoft within just two weeks! The platform is so easy to use."
-                        </p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">AN</div>
-                            <div>
-                                <h4 class="font-bold text-[#0f1a17]">Aakriti Nepal</h4>
-                                <p class="text-xs text-gray-400">UI Designer</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-card p-10 rounded-3xl text-left relative">
-                        <div class="text-primary mb-6">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
-                        </div>
-                        <p class="text-gray-600 text-lg leading-relaxed mb-8 italic">
                             "The best job portal in Nepal. The application process is seamless and the interface is beautiful."
                         </p>
                         <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary">RS</div>
+                            <div class="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary">SK</div>
                             <div>
-                                <h4 class="font-bold text-[#0f1a17]">Rohan Sharma</h4>
+                                <h4 class="font-bold text-[#0f1a17]">Sandesh Khadka</h4>
                                 <p class="text-xs text-gray-400">Backend Developer</p>
                             </div>
                         </div>
@@ -463,13 +447,29 @@
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
                         </div>
                         <p class="text-gray-600 text-lg leading-relaxed mb-8 italic">
-                            "As an employer, Sarthak made it incredibly easy to find top-tier candidates for our new office."
+                            "As an employer, this platform made it incredibly easy to find top-tier candidates for our new office."
                         </p>
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent">SM</div>
                             <div>
                                 <h4 class="font-bold text-[#0f1a17]">Sita Magar</h4>
                                 <p class="text-xs text-gray-400">HR Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card p-10 rounded-3xl text-left relative">
+                        <div class="text-primary mb-6">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                        </div>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-8 italic">
+                            "The interface is so intuitive and the support is amazing. Found a great job in no time!"
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center font-bold text-accent">AN</div>
+                            <div>
+                                <h4 class="font-bold text-[#0f1a17]">Aakriti Nepal</h4>
+                                <p class="text-xs text-gray-400">Software Engineer</p>
                             </div>
                         </div>
                     </div>
