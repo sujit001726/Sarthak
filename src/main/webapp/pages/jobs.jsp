@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,43 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="logo-container">
-            <div class="logo-icon">S</div>
-            <span class="logo-text">Sarthak</span>
-        </div>
+    <jsp:include page="includes/sidebar.jsp">
+        <jsp:param name="action" value="jobs" />
+    </jsp:include>
 
-        <nav class="sidebar-nav">
-            <div class="nav-section">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="admin?action=dashboard" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a></li>
-                    <li class="nav-item"><a href="admin?action=interviews" class="nav-link"><i class="fas fa-video"></i> Interviews</a></li>
-                </ul>
-            </div>
-
-            <div class="nav-section">
-                <h4 class="nav-title">Organizations</h4>
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="admin?action=jobBoard" class="nav-link"><i class="fas fa-clipboard-list"></i> Job Board</a></li>
-                    <li class="nav-item active"><a href="admin?action=jobs" class="nav-link"><i class="fas fa-briefcase"></i> Jobs</a></li>
-                </ul>
-            </div>
-
-            <div class="nav-section">
-                <h4 class="nav-title">Users Management</h4>
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="admin?action=users" class="nav-link"><i class="fas fa-users"></i> Team</a></li>
-                    <li class="nav-item"><a href="admin?action=candidates" class="nav-link"><i class="fas fa-user-graduate"></i> Candidates</a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="nav-section" style="margin-top: auto;">
-             <ul class="nav-list">
-                <li class="nav-item"><a href="login.jsp" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
-        </div>
-    </aside>
 
     <main class="main-wrapper">
         <header class="top-nav">
@@ -66,7 +33,7 @@
             <div class="content-card animate-fade">
                 <div class="card-header">
                     <h3>Recent Job Postings</h3>
-                    <button class="btn-sm btn-primary">Bulk Actions</button>
+                    <a href="admin?action=addJob" class="btn-sm btn-primary" style="text-decoration: none;">Add New Job +</a>
                 </div>
                 <table class="data-table">
                     <thead>

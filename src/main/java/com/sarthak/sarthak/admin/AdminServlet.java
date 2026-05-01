@@ -18,6 +18,10 @@ public class AdminServlet extends HttpServlet {
         if (action == null) action = "dashboard";
 
         try (Connection conn = DBConnection.getConnection()) {
+            if (conn == null) {
+                throw new SQLException("Could not establish database connection. Check DBConnection.java.");
+            }
+            
             switch (action) {
                 case "users":
                     listUsers(conn, request, response);
@@ -29,39 +33,36 @@ public class AdminServlet extends HttpServlet {
                     listLogs(conn, request, response);
                     break;
                 case "interviews":
-                    request.getRequestDispatcher("/pages/interviews.jsp").forward(request, response);
+                    listInterviews(conn, request, response);
                     break;
                 case "jobBoard":
-                    request.getRequestDispatcher("/pages/jobBoard.jsp").forward(request, response);
-                    break;
-                case "quizzes":
-                    request.getRequestDispatcher("/pages/quizzes.jsp").forward(request, response);
-                    break;
-                case "interviewDesigner":
-                    request.getRequestDispatcher("/pages/interviewDesigner.jsp").forward(request, response);
-                    break;
-                case "traits":
-                    request.getRequestDispatcher("/pages/traits.jsp").forward(request, response);
+                    listApplications(conn, request, response);
                     break;
                 case "categories":
-                    request.getRequestDispatcher("/pages/categories.jsp").forward(request, response);
+                    listCategories(conn, request, response);
                     break;
                 case "candidates":
-                    request.getRequestDispatcher("/pages/candidates.jsp").forward(request, response);
-                    break;
-                case "videoResume":
-                    request.getRequestDispatcher("/pages/videoResume.jsp").forward(request, response);
+                    listCandidates(conn, request, response);
                     break;
                 case "shortlisted":
-                    request.getRequestDispatcher("/pages/shortlisted.jsp").forward(request, response);
+                    listShortlisted(conn, request, response);
+                    break;
+                case "addJob":
+                    request.getRequestDispatcher("/pages/addJob.jsp").forward(request, response);
+                    break;
+                case "addCandidate":
+                    request.getRequestDispatcher("/pages/addCandidate.jsp").forward(request, response);
+                    break;
+                case "addCategory":
+                    request.getRequestDispatcher("/pages/addCategory.jsp").forward(request, response);
                     break;
                 case "dashboard":
                 default:
                     showDashboard(conn, request, response);
                     break;
             }
-        } catch (SQLException e) {
-            throw new ServletException(e);
+        } catch (Exception e) {
+            handleError(e, request, response);
         }
     }
 
@@ -69,35 +70,52 @@ public class AdminServlet extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         try (Connection conn = DBConnection.getConnection()) {
+            if (conn == null) throw new SQLException("DB Connection is null");
+            
             if ("updateUserStatus".equals(action)) {
                 updateUserStatus(conn, request, response);
             } else if ("updateJobStatus".equals(action)) {
                 updateJobStatus(conn, request, response);
+            } else if ("saveJob".equals(action)) {
+                saveJob(conn, request, response);
+            } else if ("saveCandidate".equals(action)) {
+                saveCandidate(conn, request, response);
+            } else if ("saveCategory".equals(action)) {
+                saveCategory(conn, request, response);
             }
-        } catch (SQLException e) {
-            throw new ServletException(e);
+        } catch (Exception e) {
+            handleError(e, request, response);
         }
+    }
+
+    private void handleError(Exception e, HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        e.printStackTrace();
+        String msg = e.getMessage();
+        String detail = "Check server logs for stack trace.";
+        
+        if (msg != null && msg.contains("Table") && msg.contains("doesn't exist")) {
+            detail = "The database tables are missing. Please execute the SQL commands in 'schema.sql' using your MySQL client.";
+        } else if (msg != null && msg.contains("Access denied")) {
+            detail = "Database login failed. Open 'src/main/java/com/sarthak/sarthak/util/DBConnection.java' and verify your MySQL password.";
+        }
+        
+        request.setAttribute("errorMessage", msg);
+        request.setAttribute("errorDetail", detail);
+        request.getRequestDispatcher("/pages/error.jsp").forward(request, response);
     }
 
     private void showDashboard(Connection conn, HttpServletRequest request, HttpServletResponse response) 
             throws SQLException, ServletException, IOException {
         
-        // 1. Fetch Basic Stats
         try (Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM users");
             if (rs.next()) request.setAttribute("userCount", rs.getInt(1));
             
             rs = stmt.executeQuery("SELECT COUNT(*) FROM jobs WHERE status='approved'");
             if (rs.next()) request.setAttribute("jobCount", rs.getInt(1));
-
-            rs = stmt.executeQuery("SELECT COUNT(*) FROM jobs WHERE status='pending'");
-            if (rs.next()) request.setAttribute("pendingCount", rs.getInt(1));
-            
-            // Set Admin Name (In real app, fetch from session)
-            request.setAttribute("adminName", "Sarthak Admin");
         }
         
-        // 2. Fetch Recent Job Ads for the table
         List<Map<String, String>> recentJobs = new ArrayList<>();
         try (Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery("SELECT * FROM jobs ORDER BY posted_at DESC LIMIT 4");
@@ -110,7 +128,6 @@ public class AdminServlet extends HttpServlet {
         }
         request.setAttribute("recentJobs", recentJobs);
         
-        // 3. Fetch Recent Activity Logs
         List<Map<String, String>> recentLogs = new ArrayList<>();
         try (Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery("SELECT * FROM system_logs ORDER BY timestamp DESC LIMIT 5");
@@ -125,7 +142,6 @@ public class AdminServlet extends HttpServlet {
         
         request.getRequestDispatcher("/pages/dashboard.jsp").forward(request, response);
     }
-
 
     private void listUsers(Connection conn, HttpServletRequest request, HttpServletResponse response) 
             throws SQLException, ServletException, IOException {
@@ -180,6 +196,159 @@ public class AdminServlet extends HttpServlet {
         }
         request.setAttribute("logs", logs);
         request.getRequestDispatcher("/pages/logs.jsp").forward(request, response);
+    }
+
+    private void listCandidates(Connection conn, HttpServletRequest request, HttpServletResponse response) 
+            throws SQLException, ServletException, IOException {
+        List<Map<String, String>> items = new ArrayList<>();
+        String query = "SELECT * FROM candidates ORDER BY applied_date DESC";
+        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                Map<String, String> item = new HashMap<>();
+                item.put("id", rs.getString("id"));
+                item.put("name", rs.getString("name"));
+                item.put("email", rs.getString("email"));
+                item.put("phone", rs.getString("phone"));
+                item.put("status", rs.getString("status"));
+                item.put("level", rs.getString("experience_level"));
+                items.add(item);
+            }
+        }
+        request.setAttribute("candidates", items);
+        request.getRequestDispatcher("/pages/candidates.jsp").forward(request, response);
+    }
+
+    private void listCategories(Connection conn, HttpServletRequest request, HttpServletResponse response) 
+            throws SQLException, ServletException, IOException {
+        List<Map<String, String>> items = new ArrayList<>();
+        String query = "SELECT * FROM categories ORDER BY name ASC";
+        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                Map<String, String> item = new HashMap<>();
+                item.put("name", rs.getString("name"));
+                item.put("description", rs.getString("description"));
+                item.put("date", rs.getTimestamp("created_at").toString());
+                items.add(item);
+            }
+        }
+        request.setAttribute("categories", items);
+        request.getRequestDispatcher("/pages/categories.jsp").forward(request, response);
+    }
+
+    private void listInterviews(Connection conn, HttpServletRequest request, HttpServletResponse response) 
+            throws SQLException, ServletException, IOException {
+        List<Map<String, String>> items = new ArrayList<>();
+        String query = "SELECT i.*, c.name as candidate_name FROM interviews i " +
+                      "JOIN applications a ON i.application_id = a.id " +
+                      "JOIN candidates c ON a.candidate_id = c.id ORDER BY scheduled_at DESC";
+        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                Map<String, String> item = new HashMap<>();
+                item.put("id", rs.getString("id"));
+                item.put("candidate", rs.getString("candidate_name"));
+                item.put("time", rs.getTimestamp("scheduled_at") != null ? rs.getTimestamp("scheduled_at").toString() : "N/A");
+                item.put("interviewer", rs.getString("interviewer"));
+                item.put("status", rs.getString("status"));
+                items.add(item);
+            }
+        }
+        request.setAttribute("interviews", items);
+        request.getRequestDispatcher("/pages/interviews.jsp").forward(request, response);
+    }
+
+    private void listApplications(Connection conn, HttpServletRequest request, HttpServletResponse response) 
+            throws SQLException, ServletException, IOException {
+        List<Map<String, String>> items = new ArrayList<>();
+        String query = "SELECT a.*, c.name as candidate_name, j.title as job_title FROM applications a " +
+                      "JOIN candidates c ON a.candidate_id = c.id " +
+                      "JOIN jobs j ON a.job_id = j.id ORDER BY applied_at DESC";
+        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                Map<String, String> item = new HashMap<>();
+                item.put("id", rs.getString("id"));
+                item.put("candidate", rs.getString("candidate_name"));
+                item.put("job", rs.getString("job_title"));
+                item.put("status", rs.getString("status"));
+                item.put("date", rs.getTimestamp("applied_at").toString());
+                items.add(item);
+            }
+        }
+        request.setAttribute("applications", items);
+        request.getRequestDispatcher("/pages/jobBoard.jsp").forward(request, response);
+    }
+
+    private void listShortlisted(Connection conn, HttpServletRequest request, HttpServletResponse response) 
+            throws SQLException, ServletException, IOException {
+        List<Map<String, String>> items = new ArrayList<>();
+        String query = "SELECT * FROM candidates WHERE status = 'shortlisted' ORDER BY applied_date DESC";
+        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                Map<String, String> item = new HashMap<>();
+                item.put("id", rs.getString("id"));
+                item.put("name", rs.getString("name"));
+                item.put("email", rs.getString("email"));
+                item.put("status", rs.getString("status"));
+                items.add(item);
+            }
+        }
+        request.setAttribute("shortlisted", items);
+        request.getRequestDispatcher("/pages/shortlisted.jsp").forward(request, response);
+    }
+
+    private void saveJob(Connection conn, HttpServletRequest request, HttpServletResponse response) 
+            throws SQLException, IOException {
+        String title = request.getParameter("title");
+        String company = request.getParameter("company");
+        String location = request.getParameter("location");
+        String salary = request.getParameter("salary");
+        String status = request.getParameter("status");
+
+        String query = "INSERT INTO jobs (title, company_name, location, salary, status) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, title);
+            pstmt.setString(2, company);
+            pstmt.setString(3, location);
+            pstmt.setString(4, salary);
+            pstmt.setString(5, status);
+            pstmt.executeUpdate();
+            logAction(conn, "Admin posted new Job: " + title + " at " + company, "admin");
+        }
+        response.sendRedirect("admin?action=jobs");
+    }
+
+    private void saveCandidate(Connection conn, HttpServletRequest request, HttpServletResponse response) 
+            throws SQLException, IOException {
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String level = request.getParameter("level");
+        String status = request.getParameter("status");
+
+        String query = "INSERT INTO candidates (name, email, phone, experience_level, status) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, name);
+            pstmt.setString(2, email);
+            pstmt.setString(3, phone);
+            pstmt.setString(4, level);
+            pstmt.setString(5, status);
+            pstmt.executeUpdate();
+            logAction(conn, "Admin added new Candidate: " + name, "admin");
+        }
+        response.sendRedirect("admin?action=candidates");
+    }
+
+    private void saveCategory(Connection conn, HttpServletRequest request, HttpServletResponse response) 
+            throws SQLException, IOException {
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        String query = "INSERT INTO categories (name, description) VALUES (?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, name);
+            pstmt.setString(2, description);
+            pstmt.executeUpdate();
+            logAction(conn, "Admin created category: " + name, "admin");
+        }
+        response.sendRedirect("admin?action=categories");
     }
 
     private void updateUserStatus(Connection conn, HttpServletRequest request, HttpServletResponse response) 

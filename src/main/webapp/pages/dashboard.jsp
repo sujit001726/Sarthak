@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,55 +11,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="logo-container">
-            <div class="logo-icon">S</div>
-            <span class="logo-text">Sarthak</span>
-        </div>
+    <jsp:include page="includes/sidebar.jsp">
+        <jsp:param name="action" value="dashboard" />
+    </jsp:include>
 
-        <nav class="sidebar-nav">
-            <div class="nav-section">
-                <ul class="nav-list">
-                    <li class="nav-item active"><a href="admin?action=dashboard" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a></li>
-                    <li class="nav-item"><a href="admin?action=interviews" class="nav-link"><i class="fas fa-video"></i> Interviews</a></li>
-                </ul>
-            </div>
-
-            <div class="nav-section">
-                <h4 class="nav-title">Organizations</h4>
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="admin?action=jobBoard" class="nav-link"><i class="fas fa-clipboard-list"></i> Job Board</a></li>
-                    <li class="nav-item"><a href="admin?action=jobs" class="nav-link"><i class="fas fa-briefcase"></i> Jobs</a></li>
-                </ul>
-            </div>
-
-            <div class="nav-section">
-                <h4 class="nav-title">Tools Management</h4>
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="admin?action=quizzes" class="nav-link"><i class="fas fa-pen-nib"></i> Quiz Designer</a></li>
-                    <li class="nav-item"><a href="admin?action=interviewDesigner" class="nav-link"><i class="fas fa-user-tie"></i> Interview Designer</a></li>
-                    <li class="nav-item"><a href="admin?action=traits" class="nav-link"><i class="fas fa-star"></i> Traits</a></li>
-                    <li class="nav-item"><a href="admin?action=categories" class="nav-link"><i class="fas fa-tags"></i> Categories</a></li>
-                </ul>
-            </div>
-
-            <div class="nav-section">
-                <h4 class="nav-title">Users Management</h4>
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="admin?action=users" class="nav-link"><i class="fas fa-users"></i> Team</a></li>
-                    <li class="nav-item"><a href="admin?action=candidates" class="nav-link"><i class="fas fa-user-graduate"></i> Candidates</a></li>
-                    <li class="nav-item"><a href="admin?action=videoResume" class="nav-link"><i class="fas fa-play-circle"></i> Videos Resume Hub</a></li>
-                    <li class="nav-item"><a href="admin?action=shortlisted" class="nav-link"><i class="fas fa-check-double"></i> Shortlisted</a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="nav-section" style="margin-top: auto;">
-             <ul class="nav-list">
-                <li class="nav-item"><a href="login.jsp" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
-        </div>
-    </aside>
 
     <main class="main-wrapper">
         <header class="top-nav">
@@ -142,7 +97,7 @@
                             <h3>Your Job Ads</h3>
                             <div>
                                 <button class="btn-sm btn-outline">VIEW ALL</button>
-                                <button class="btn-sm btn-primary">Create Job Ad +</button>
+                                <a href="admin?action=addJob" class="btn-sm btn-primary" style="text-decoration: none;">Create Job Ad +</a>
                             </div>
                         </div>
                         <table class="data-table">
@@ -247,30 +202,19 @@
                         </div>
                     </div>
 
-                    <div class="content-card">
+                    <div class="content-card calendar-dynamic">
                         <div class="card-header">
-                            <h3>Pending Quizzes</h3>
+                            <h3>Calendar</h3>
                         </div>
-                        <ul class="nav-list">
-                            <li class="nav-item" style="border-bottom: 1px solid #f1f5f9; padding: 10px 0;">
-                                <p style="font-size: 0.85rem;">Which type of work environment do you prefer?</p>
-                            </li>
-                            <li class="nav-item" style="border-bottom: 1px solid #f1f5f9; padding: 10px 0;">
-                                <p style="font-size: 0.85rem;">What type of tasks do you enjoy the most?</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="calendar-card">
-                        <div class="calendar-header">
-                            <span>November 2024</span>
-                            <div><i class="fas fa-chevron-left"></i> <i class="fas fa-chevron-right"></i></div>
-                        </div>
-                        <div class="calendar-grid">
-                            <div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div><div class="cal-day-name">S</div>
-                            <div class="cal-date">28</div><div class="cal-date">29</div><div class="cal-date">30</div><div class="cal-date">31</div><div class="cal-date">1</div><div class="cal-date">2</div><div class="cal-date">3</div>
-                            <div class="cal-date">4</div><div class="cal-date">5</div><div class="cal-date">6</div><div class="cal-date">7</div><div class="cal-date">8</div><div class="cal-date">9</div><div class="cal-date">10</div>
-                            <div class="cal-date active">11</div><div class="cal-date">12</div><div class="cal-date">13</div><div class="cal-date">14</div><div class="cal-date">15</div><div class="cal-date">16</div><div class="cal-date">17</div>
+                        <div class="calendar-container">
+                            <div id="calendar-header-v3" style="display: flex !important; justify-content: center !important; align-items: center !important; gap: 40px !important; margin: 30px 0 !important; width: 100% !important; visibility: visible !important; opacity: 1 !important;">
+                                <button onclick="prevMonth()" style="background: none !important; border: none !important; font-size: 30px !important; color: #4f46e5 !important; cursor: pointer !important; padding: 10px !important; display: block !important;">&lt;</button>
+                                <span id="FINAL_MONTH_DISPLAY" style="font-size: 24px !important; font-weight: 900 !important; color: #000000 !important; display: block !important; text-align: center !important; min-width: 150px !important; visibility: visible !important; opacity: 1 !important;">MAY 2026</span>
+                                <button onclick="nextMonth()" style="background: none !important; border: none !important; font-size: 30px !important; color: #4f46e5 !important; cursor: pointer !important; padding: 10px !important; display: block !important;">&gt;</button>
+                            </div>
+                            <div class="calendar-grid-dynamic" id="calendarGrid">
+                                <!-- Days will be injected here -->
+                            </div>
                         </div>
                     </div>
 
@@ -287,6 +231,56 @@
     </main>
 
     <script>
+        // Calendar Logic
+        let currentDate = new Date();
+
+        function renderCalendar() {
+            const monthDisplay = document.getElementById('FINAL_MONTH_DISPLAY');
+            const calendarGrid = document.getElementById('calendarGrid');
+            if (!monthDisplay || !calendarGrid) return;
+            
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            const firstDay = new Date(year, month, 1).getDay();
+            const lastDate = new Date(year, month + 1, 0).getDate();
+            
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            monthDisplay.innerText = `${monthNames[month]} ${year}`;
+            
+            calendarGrid.innerHTML = '';
+            
+            const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            dayNames.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'calendar-day-header';
+                dayHeader.innerText = day;
+                calendarGrid.appendChild(dayHeader);
+            });
+            
+            for (let i = 0; i < firstDay; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'calendar-date-cell empty';
+                calendarGrid.appendChild(emptyCell);
+            }
+            
+            const today = new Date();
+            for (let i = 1; i <= lastDate; i++) {
+                const dateCell = document.createElement('div');
+                dateCell.className = 'calendar-date-cell';
+                if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                    dateCell.classList.add('today');
+                }
+                dateCell.innerText = i;
+                calendarGrid.appendChild(dateCell);
+            }
+        }
+
+        window.prevMonth = () => { currentDate.setMonth(currentDate.getMonth() - 1); renderCalendar(); };
+        window.nextMonth = () => { currentDate.setMonth(currentDate.getMonth() + 1); renderCalendar(); };
+
+        renderCalendar();
+
         const ctx = document.getElementById('overviewChart').getContext('2d');
         new Chart(ctx, {
             type: 'doughnut',
