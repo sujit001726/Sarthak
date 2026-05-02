@@ -160,3 +160,59 @@ CREATE TABLE IF NOT EXISTS categories (
 ALTER TABLE jobs ADD COLUMN location VARCHAR(100) AFTER salary;
 
 
+
+-- ── Sample Seed Data ─────────────────────────────────────────────────────────
+
+-- Sample Jobs
+INSERT IGNORE INTO jobs (id, title, company_name, salary, location, status) VALUES
+(1, 'Java Backend Developer',  'Sarthak IT Solutions', 'Rs. 60,000 - 90,000',  'Kathmandu', 'approved'),
+(2, 'React Frontend Developer','Sarthak IT Solutions', 'Rs. 50,000 - 80,000',  'Lalitpur',  'approved'),
+(3, 'DevOps Engineer',         'Sarthak IT Solutions', 'Rs. 80,000 - 120,000', 'Kathmandu', 'approved'),
+(4, 'UI/UX Designer',          'Sarthak IT Solutions', 'Rs. 45,000 - 70,000',  'Bhaktapur', 'approved'),
+(5, 'QA Engineer',             'Sarthak IT Solutions', 'Rs. 40,000 - 65,000',  'Kathmandu', 'pending');
+
+-- Sample Candidates
+INSERT IGNORE INTO candidates (id, name, email, phone, experience_level, status) VALUES
+(1, 'Aarav Sharma',    'aarav@example.com',   '9841000001', 'intermediate', 'applied'),
+(2, 'Bipana Thapa',    'bipana@example.com',  '9841000002', 'senior',       'shortlisted'),
+(3, 'Chirag Adhikari', 'chirag@example.com',  '9841000003', 'entry_level',  'applied'),
+(4, 'Deepa Karki',     'deepa@example.com',   '9841000004', 'expert',       'shortlisted'),
+(5, 'Eshan Pokhrel',   'eshan@example.com',   '9841000005', 'intermediate', 'applied'),
+(6, 'Fiona Rai',       'fiona@example.com',   '9841000006', 'senior',       'applied');
+
+-- Sample Applications (candidate → job)
+INSERT IGNORE INTO applications (id, job_id, candidate_id, status) VALUES
+(1, 1, 1, 'screened'),
+(2, 1, 2, 'screened'),
+(3, 2, 3, 'applied'),
+(4, 2, 4, 'screened'),
+(5, 3, 5, 'applied'),
+(6, 4, 6, 'screened'),
+(7, 3, 1, 'applied'),
+(8, 5, 2, 'applied');
+
+
+
+INSERT IGNORE INTO jobs (id, title, company_name, salary, location, status) VALUES
+                                                                                (1, 'Java Backend Developer',  'Sarthak IT Solutions', 'Rs. 60,000 - 90,000',  'Kathmandu', 'approved'),
+                                                                                (2, 'React Frontend Developer','Sarthak IT Solutions', 'Rs. 50,000 - 80,000',  'Lalitpur',  'approved'),
+                                                                                (3, 'DevOps Engineer',         'Sarthak IT Solutions', 'Rs. 80,000 - 120,000', 'Kathmandu', 'approved'),
+                                                                                (4, 'UI/UX Designer',          'Sarthak IT Solutions', 'Rs. 45,000 - 70,000',  'Bhaktapur', 'approved'),
+                                                                                (5, 'QA Engineer',             'Sarthak IT Solutions', 'Rs. 40,000 - 65,000',  'Kathmandu', 'pending');
+
+INSERT IGNORE INTO candidates (id, name, email, phone, experience_level, status) VALUES
+                                                                                     (1, 'Ujjwal Rupakheti',    'ujjwal@gmail.com',   '9841000001', 'expert', 'applied'),
+                                                                                     (2, 'Nischal Giri',    'Nischal@gmail.com',  '9841000002', 'senior',       'shortlisted'),
+                                                                                     (3, 'Pritam Rai', 'Pritam@gmail.com',  '9841000003', 'entry_level',  'applied'),
+                                                                                     (4, 'Ashmit Dev',     'Ashmit@gmail.com',   '9841000004', 'intermediate',       'shortlisted'),
+                                                                                     (5, 'Abhishek Kumar Dev',   'Abhishek@gmail.com',   '9841000005', 'intermediate', 'applied');
+
+INSERT IGNORE INTO applications (id, job_id, candidate_id, status) VALUES
+                                                                       (1, 1, 1, 'screened'),
+                                                                       (2, 1, 2, 'screened'),
+                                                                       (3, 2, 3, 'applied'),
+                                                                       (4, 2, 4, 'screened'),
+                                                                       (5, 3, 5, 'applied'),
+                                                                       (6, 4, 6, 'screened'),
+                                                                       (7, 3, 1, 'applied'),
+                                                                       (8, 5, 2, 'applied');

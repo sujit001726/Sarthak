@@ -32,13 +32,13 @@
                     
                     <div style="display: grid; gap: 8px;">
                         <label style="font-weight: 600; font-size: 0.9rem;">Full Name</label>
-                        <input type="text" name="name" required placeholder="e.g. John Doe" style="padding: 10px; border: 1px solid var(--border-color); border-radius: 8px;">
+                        <input type="text" name="name" required placeholder="e.g. Sujit" style="padding: 10px; border: 1px solid var(--border-color); border-radius: 8px;">
                     </div>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div style="display: grid; gap: 8px;">
                             <label style="font-weight: 600; font-size: 0.9rem;">Email Address</label>
-                            <input type="email" name="email" required placeholder="john.doe@example.com" style="padding: 10px; border: 1px solid var(--border-color); border-radius: 8px;">
+                            <input type="email" name="email" required placeholder="sujit@example.com" style="padding: 10px; border: 1px solid var(--border-color); border-radius: 8px;">
                         </div>
                         <div style="display: grid; gap: 8px;">
                             <label style="font-weight: 600; font-size: 0.9rem;">Phone Number</label>

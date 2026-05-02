@@ -46,48 +46,44 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="user" items="${users}">
+                            <c:forEach var="u" items="${users}">
                                 <tr>
                                     <td>
-                                        <div style="display: flex; align-items: center; gap: 10px;">
-                                            <img src="https://ui-avatars.com/api/?name=${user.name}&background=random" style="width: 32px; height: 32px; border-radius: 8px;">
-                                            <span style="font-weight: 600;">${user.name}</span>
-                                        </div>
-                                    </td>
-                                    <td>${user.email}</td>
-                                    <td>
-                                        <span class="status-badge" style="background: var(--primary-light); color: var(--primary);">
-                                            <c:choose>
-                                                <c:when test="${user.name == 'Sujit Shah' && user.type == 'admin'}">Admin</c:when>
-                                                <c:otherwise>${user.type}</c:otherwise>
-                                            </c:choose>
-                                        </span>
-                                    </td>
-
-                                    <td>
-                                        <span class="status-badge" style="background: ${user.status == 'active' ? '#f0fdf4' : '#fef2f2'}; color: ${user.status == 'active' ? 'var(--success)' : 'var(--danger)'};">
-                                            ${user.status}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <form action="admin" method="POST" style="display: inline;">
-                                            <input type="hidden" name="action" value="updateUserStatus">
-                                            <input type="hidden" name="userId" value="${user.id}">
-                                            <c:choose>
-                                                <c:when test="${user.status == 'active'}">
-                                                    <button name="status" value="suspended" class="btn-sm btn-outline" style="color: var(--danger)" title="Suspend">
-                                                        <i class="fas fa-user-slash"></i>
-                                                    </button>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <button name="status" value="active" class="btn-sm btn-outline" style="color: var(--success)" title="Activate">
-                                                        <i class="fas fa-user-check"></i>
-                                                    </button>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </form>
-                                    </td>
-                                </tr>
+                                         <div style="display: flex; align-items: center; gap: 10px;">
+                                             <img src="https://ui-avatars.com/api/?name=<c:out value='${u.fullName}'/>&background=random" style="width: 32px; height: 32px; border-radius: 8px;">
+                                             <span style="font-weight: 600;"><c:out value="${u.fullName}"/></span>
+                                         </div>
+                                     </td>
+                                     <td><c:out value="${u.email}"/></td>
+                                     <td>
+                                         <span class="status-badge" style="background: var(--primary-light); color: var(--primary);">
+                                             <c:out value="${u.userType}"/>
+                                         </span>
+                                     </td>
+                                     <td>
+                                         <span class="status-badge" style="background: ${u.status == 'active' ? '#f0fdf4' : '#fef2f2'}; color: ${u.status == 'active' ? 'var(--success)' : 'var(--danger)'};">
+                                             <c:out value="${u.status}"/>
+                                         </span>
+                                     </td>
+                                     <td>
+                                         <form action="admin" method="POST" style="display: inline;">
+                                             <input type="hidden" name="action" value="updateUserStatus">
+                                             <input type="hidden" name="userId" value="${u.id}">
+                                             <c:choose>
+                                                 <c:when test="${u.status == 'active'}">
+                                                     <button name="status" value="suspended" class="btn-sm btn-outline" style="color: var(--danger)" title="Suspend">
+                                                         <i class="fas fa-user-slash"></i>
+                                                     </button>
+                                                 </c:when>
+                                                 <c:otherwise>
+                                                     <button name="status" value="active" class="btn-sm btn-outline" style="color: var(--success)" title="Activate">
+                                                         <i class="fas fa-user-check"></i>
+                                                     </button>
+                                                 </c:otherwise>
+                                             </c:choose>
+                                         </form>
+                                     </td>
+                                 </tr>
                             </c:forEach>
                             <c:if test="${empty users}">
                                 <tr>

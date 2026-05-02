@@ -51,14 +51,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="app" items="${applications}">
+                            <c:forEach var="a" items="${applications}">
                                 <tr>
-                                    <td><div style="font-weight: 600;">${app.candidate}</div></td>
-                                    <td><span style="color: var(--primary);">${app.job}</span></td>
-                                    <td>${app.date}</td>
+                                    <td><div style="font-weight: 600;"><c:out value="${a.candidateName}" /></div></td>
+                                    <td><span style="color: var(--primary);"><c:out value="${a.jobTitle}" /></span></td>
+                                    <td><c:out value="${a.appliedAt}" /></td>
                                     <td>
                                         <span class="status-badge" style="background: #fef3c7; color: var(--warning);">
-                                            ${app.status}
+                                            <c:out value="${a.status}" />
                                         </span>
                                     </td>
                                     <td>

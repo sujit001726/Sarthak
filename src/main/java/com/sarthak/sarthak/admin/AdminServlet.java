@@ -8,7 +8,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
-@WebServlet("/admin")
+// This file is superseded by com.sarthak.sarthak.job.controller.AdminServlet
+// @WebServlet("/admin")
 public class AdminServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -149,13 +150,13 @@ public class AdminServlet extends HttpServlet {
         String query = "SELECT * FROM users ORDER BY created_at DESC";
         try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
-                Map<String, String> user = new HashMap<>();
-                user.put("id", rs.getString("id"));
-                user.put("name", rs.getString("full_name"));
-                user.put("email", rs.getString("email"));
-                user.put("type", rs.getString("user_type"));
-                user.put("status", rs.getString("status"));
-                users.add(user);
+                Map<String, String> u = new HashMap<>();
+                u.put("id", String.valueOf(rs.getInt("id")));
+                u.put("name", rs.getString("full_name") != null ? rs.getString("full_name") : "Anonymous");
+                u.put("email", rs.getString("email") != null ? rs.getString("email") : "N/A");
+                u.put("type", rs.getString("user_type") != null ? rs.getString("user_type") : "recruiter");
+                u.put("status", rs.getString("status") != null ? rs.getString("status") : "active");
+                users.add(u);
             }
         }
         request.setAttribute("users", users);
@@ -260,16 +261,19 @@ public class AdminServlet extends HttpServlet {
             throws SQLException, ServletException, IOException {
         List<Map<String, String>> items = new ArrayList<>();
         String query = "SELECT a.*, c.name as candidate_name, j.title as job_title FROM applications a " +
-                      "JOIN candidates c ON a.candidate_id = c.id " +
-                      "JOIN jobs j ON a.job_id = j.id ORDER BY applied_at DESC";
+                      "LEFT JOIN candidates c ON a.candidate_id = c.id " +
+                      "LEFT JOIN jobs j ON a.job_id = j.id ORDER BY a.applied_at DESC";
         try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
                 Map<String, String> item = new HashMap<>();
-                item.put("id", rs.getString("id"));
-                item.put("candidate", rs.getString("candidate_name"));
-                item.put("job", rs.getString("job_title"));
-                item.put("status", rs.getString("status"));
-                item.put("date", rs.getTimestamp("applied_at").toString());
+                item.put("id", String.valueOf(rs.getInt("id")));
+                String candName = rs.getString("candidate_name");
+                String jobTitle = rs.getString("job_title");
+                item.put("candidate", candName != null ? candName : "Unknown Candidate");
+                item.put("job", jobTitle != null ? jobTitle : "Unknown Job");
+                item.put("status", rs.getString("status") != null ? rs.getString("status") : "applied");
+                Timestamp appliedAt = rs.getTimestamp("applied_at");
+                item.put("date", appliedAt != null ? appliedAt.toString() : "N/A");
                 items.add(item);
             }
         }

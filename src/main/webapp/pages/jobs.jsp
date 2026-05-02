@@ -49,7 +49,7 @@
                         <c:forEach var="job" items="${jobs}">
                             <tr>
                                 <td><span style="font-weight: 600; color: var(--primary);">${job.title}</span></td>
-                                <td>${job.company}</td>
+                                <td>${job.companyName}</td>
                                 <td>${job.salary}</td>
                                 <td>
                                     <span class="status-badge" style="background: ${job.status == 'approved' ? '#f0fdf4' : (job.status == 'pending' ? '#fff7ed' : '#fef2f2')}; color: ${job.status == 'approved' ? 'var(--success)' : (job.status == 'pending' ? 'var(--warning)' : 'var(--danger)')};">
