@@ -1,0 +1,12 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------------< org.example:java >--------------------------
+[INFO] Building demo 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- cargo:1.10.15:run (default-cli) @ java ---
+[INFO] Resolved container artifact org.codehaus.cargo:cargo-core-container-tomcat:jar:1.10.15 for container tomcat10x
+[INFO] Tomcat 10.x Embedded starting...
+[INFO] Tomcat 10.x Embedded started on port [8095]
+[INFO] Press Ctrl-C to stop the container...
