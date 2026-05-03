@@ -1,6 +1,7 @@
 package sarthak.controller;
 
 import sarthak.dao.JobDAO;
+import sarthak.dao.InMemoryJobStore;
 import sarthak.model.Job;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/employer/dashboard")
@@ -27,19 +29,24 @@ public class EmployerDashboardServlet extends HttpServlet {
 
         int employerId = (int) session.getAttribute("userId");
 
+        List<Job> jobs = new ArrayList<>();
+        int totalJobs = 0;
+
         try {
-            List<Job> jobs = jobDAO.getJobsByEmployer(employerId);
-            int totalJobs = jobDAO.countJobsByEmployer(employerId);
-
-            req.setAttribute("jobs", jobs);
-            req.setAttribute("totalJobs", totalJobs);
-            req.setAttribute("employerName", session.getAttribute("name"));
-
-            req.getRequestDispatcher("/pages/employedashboard.jsp").forward(req, resp);
+            jobs = jobDAO.getJobsByEmployer(employerId);
+            totalJobs = jobDAO.countJobsByEmployer(employerId);
         } catch (Exception e) {
-            // Log error, forward to error page
-            e.printStackTrace();
-            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            jobs = InMemoryJobStore.getJobsByEmployer(employerId);
+            totalJobs = jobs.size();
+            req.setAttribute("databaseError", "Dashboard loaded, but MySQL is not connected with the configured user/password.");
         }
+
+        req.setAttribute("jobs", jobs);
+        req.setAttribute("totalJobs", totalJobs);
+        req.setAttribute("employerName", session.getAttribute("name"));
+        req.setAttribute("flash", session.getAttribute("flash"));
+        session.removeAttribute("flash");
+
+        req.getRequestDispatcher("/employer/employer-dashboard.jsp").forward(req, resp);
     }
 }

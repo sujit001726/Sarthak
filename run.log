@@ -1,41 +1,12 @@
 [INFO] Scanning for projects...
 [INFO] 
-[INFO] ----------------------< com.jobportal:job-portal >----------------------
-[INFO] Building Job Portal 1.0.0
+[INFO] --------------------------< org.example:java >--------------------------
+[INFO] Building demo 1.0-SNAPSHOT
 [INFO]   from pom.xml
 [INFO] --------------------------------[ war ]---------------------------------
 [INFO] 
-[INFO] --- clean:3.2.0:clean (default-clean) @ job-portal ---
-[INFO] Deleting E:\CWOFAp\target
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ job-portal ---
-[INFO] skip non existing resourceDirectory E:\CWOFAp\src\main\resources
-[INFO] 
-[INFO] --- compiler:3.13.0:compile (default-compile) @ job-portal ---
-[INFO] Recompiling the module because of changed source code.
-[INFO] Compiling 15 source files with javac [debug release 8] to target\classes
-[WARNING] source value 8 is obsolete and will be removed in a future release
-[WARNING] target value 8 is obsolete and will be removed in a future release
-[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ job-portal ---
-[INFO] skip non existing resourceDirectory E:\CWOFAp\src\test\resources
-[INFO] 
-[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ job-portal ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] --- surefire:3.2.5:test (default-test) @ job-portal ---
-[INFO] No tests to run.
-[INFO] 
-[INFO] --- war:3.4.0:war (default-war) @ job-portal ---
-[INFO] Packaging webapp
-[INFO] Assembling webapp [job-portal] in [E:\CWOFAp\target\jobportal]
-[INFO] Processing war project
-[INFO] Copying webapp resources [E:\CWOFAp\src\main\webapp]
-[INFO] Building war: E:\CWOFAp\target\jobportal.war
-[INFO] 
-[INFO] --- cargo:1.10.15:run (default-cli) @ job-portal ---
-[INFO] Resolved container artifact org.codehaus.cargo:cargo-core-container-tomcat:jar:1.10.15 for container tomcat9x
-[INFO] Tomcat 9.x Embedded starting...
-[INFO] Tomcat 9.x Embedded started on port [8095]
+[INFO] --- cargo:1.10.15:run (default-cli) @ java ---
+[INFO] Resolved container artifact org.codehaus.cargo:cargo-core-container-tomcat:jar:1.10.15 for container tomcat10x
+[INFO] Tomcat 10.x Embedded starting...
+[INFO] Tomcat 10.x Embedded started on port [8095]
 [INFO] Press Ctrl-C to stop the container...

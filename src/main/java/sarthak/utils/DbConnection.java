@@ -5,14 +5,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbConnection {
-    // Database URL (connecting to MySQL database "satthak")
-    static String URL = "jdbc:mysql://localhost:3306/sarthak";
+    private static final String DEFAULT_URL = "jdbc:mysql://localhost:3306/sarthak";
+    private static final String DEFAULT_USER = "root";
+    private static final String DEFAULT_PASSWORD = "1234";
 
-    // Database username
-    static String USER = "root";
-
-    // Database password
-    static String PASSWORD = "1234";
+    static String URL = getConfig("DB_URL", DEFAULT_URL);
+    static String USER = getConfig("DB_USER", DEFAULT_USER);
+    static String PASSWORD = getConfig("DB_PASSWORD", DEFAULT_PASSWORD);
 
     // Method to get database connection
     public static Connection getConnection() throws SQLException {
@@ -27,5 +26,13 @@ public class DbConnection {
 
         // Return connection object using DriverManager
         return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+
+    private static String getConfig(String key, String defaultValue) {
+        String value = System.getenv(key);
+        if (value == null || value.isBlank()) {
+            value = System.getProperty(key);
+        }
+        return value == null || value.isBlank() ? defaultValue : value;
     }
 }

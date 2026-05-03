@@ -4,14 +4,39 @@
 <html>
 <head>
     <title>Employer Dashboard</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css">
 </head>
 <body>
-    <jsp:include page="/WEB-INF/includes/header.jsp"/>
-    <h1>Employer Dashboard</h1>
-    <p>Welcome, ${employerName}!</p>
-    <p>Total Jobs Posted: ${totalJobs}</p>
-    <a href="${pageContext.request.contextPath}/employer/post-job">Post New Job</a>
-    <table border="1">
+<main class="page">
+    <header class="topbar">
+        <strong class="brand">Sarthak Employer Portal</strong>
+        <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+    </header>
+    <section class="hero-row">
+        <div>
+            <h1>Employer Dashboard</h1>
+            <p>Welcome, ${employerName}!</p>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <span>Total Jobs Posted</span>
+                <strong>${totalJobs}</strong>
+            </div>
+        </div>
+    </section>
+    <c:if test="${not empty flash}">
+        <div class="notice">${flash}</div>
+    </c:if>
+    <c:if test="${not empty databaseError}">
+        <div class="notice">${databaseError}</div>
+    </c:if>
+    <section class="panel">
+        <div class="panel-head">
+            <strong>Posted Jobs</strong>
+            <a class="button" href="${pageContext.request.contextPath}/employer/post-job">Post New Job</a>
+        </div>
+        <div class="table-wrap">
+    <table>
         <thead>
             <tr>
                 <th>Job Title</th>
@@ -33,22 +58,26 @@
                     </td>
                     <td>${job.postedAt}</td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/employer/edit-job?id=${job.id}">Edit</a> |
-                        <form method="post" action="${pageContext.request.contextPath}/employer/delete-job" style="display:inline;">
+                        <div class="row-actions">
+                        <a class="button secondary" href="${pageContext.request.contextPath}/employer/edit-job?id=${job.id}">Edit</a>
+                        <form class="inline-form" method="post" action="${pageContext.request.contextPath}/employer/delete-job">
                             <input type="hidden" name="jobId" value="${job.id}">
-                            <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
-                        </form> |
-                        <a href="${pageContext.request.contextPath}/employer/applicants?jobId=${job.id}">View Applicants</a>
+                            <button class="button danger" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                        <a class="button secondary" href="${pageContext.request.contextPath}/employer/applicants?jobId=${job.id}">Applicants</a>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>
             <c:if test="${empty jobs}">
                 <tr>
-                    <td colspan="6">No jobs posted yet.</td>
+                    <td class="empty-state" colspan="6">No jobs posted yet.</td>
                 </tr>
             </c:if>
         </tbody>
     </table>
-    <jsp:include page="/WEB-INF/includes/footer.jsp"/>
+        </div>
+    </section>
+</main>
 </body>
 </html>
