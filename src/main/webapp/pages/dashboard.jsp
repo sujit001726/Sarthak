@@ -42,7 +42,7 @@
                         <div class="stat-icon-mini" style="background:#eff6ff;color:#3b82f6;"><i class="fas fa-briefcase"></i></div>
                     </div>
                     <span class="stat-label">All Jobs</span>
-                    <a href="#" class="stat-more">View More <i class="fas fa-arrow-right"></i></a>
+                    <a href="admin?action=jobs" class="stat-more">View More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
@@ -50,39 +50,39 @@
                         <div class="stat-icon-mini" style="background:#fdf2f8;color:#db2777;"><i class="fas fa-users"></i></div>
                     </div>
                     <span class="stat-label">Total Candidates</span>
-                    <a href="#" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
+                    <a href="admin?action=candidates" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
-                        <span class="stat-value">130</span>
+                        <span class="stat-value">${appCount}</span>
                         <div class="stat-icon-mini" style="background:#f5f3ff;color:#7c3aed;"><i class="fas fa-file-alt"></i></div>
                     </div>
                     <span class="stat-label">Total Applications</span>
-                    <a href="#" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
+                    <a href="admin?action=jobBoard" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
-                        <span class="stat-value">26</span>
+                        <span class="stat-value">${interviewCount}</span>
                         <div class="stat-icon-mini" style="background:#fff7ed;color:#ea580c;"><i class="fas fa-video"></i></div>
                     </div>
                     <span class="stat-label">Total Interviews</span>
-                    <a href="#" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
+                    <a href="admin?action=interviews" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
-                        <span class="stat-value">12</span>
+                        <span class="stat-value">${hiredCount}</span>
                         <div class="stat-icon-mini" style="background:#f0fdf4;color:#16a34a;"><i class="fas fa-check-circle"></i></div>
                     </div>
                     <span class="stat-label">Total Hired</span>
-                    <a href="#" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
+                    <a href="admin?action=shortlisted" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
-                        <span class="stat-value">08</span>
+                        <span class="stat-value">${rejectedCount}</span>
                         <div class="stat-icon-mini" style="background:#fef2f2;color:#dc2626;"><i class="fas fa-times-circle"></i></div>
                     </div>
                     <span class="stat-label">Total Rejected</span>
-                    <a href="#" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
+                    <a href="admin?action=candidates" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
                 </div>
             </section>
 

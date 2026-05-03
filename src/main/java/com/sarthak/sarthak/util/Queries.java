@@ -8,7 +8,7 @@ public final class Queries {
     private Queries() {}
 
     // Users
-    public static final String COUNT_USERS        = "SELECT COUNT(*) FROM users";
+    public static final String COUNT_USERS        = "SELECT COUNT(*) FROM candidates";
     public static final String COUNT_APPROVED_JOBS= "SELECT COUNT(*) FROM jobs WHERE status='approved'";
 
     // Categories

@@ -83,11 +83,23 @@ public class AdminServlet extends HttpServlet {
         try (Connection conn = DBConnection.getConnection();
              Statement stmt = conn.createStatement()) {
 
-            ResultSet rs = stmt.executeQuery(Queries.COUNT_USERS);
+            ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM candidates");
             if (rs.next()) request.setAttribute("userCount", rs.getInt(1));
 
-            rs = stmt.executeQuery(Queries.COUNT_APPROVED_JOBS);
+            rs = stmt.executeQuery("SELECT COUNT(*) FROM jobs WHERE status='approved'");
             if (rs.next()) request.setAttribute("jobCount", rs.getInt(1));
+
+            rs = stmt.executeQuery("SELECT COUNT(*) FROM applications");
+            if (rs.next()) request.setAttribute("appCount", rs.getInt(1));
+
+            rs = stmt.executeQuery("SELECT COUNT(*) FROM interviews");
+            if (rs.next()) request.setAttribute("interviewCount", rs.getInt(1));
+
+            rs = stmt.executeQuery("SELECT COUNT(*) FROM candidates WHERE status='hired'");
+            if (rs.next()) request.setAttribute("hiredCount", rs.getInt(1));
+
+            rs = stmt.executeQuery("SELECT COUNT(*) FROM candidates WHERE status='rejected'");
+            if (rs.next()) request.setAttribute("rejectedCount", rs.getInt(1));
         }
         request.setAttribute("recentJobs", jobDAO.getRecentJobs(4));
         request.getRequestDispatcher("/pages/dashboard.jsp").forward(request, response);
