@@ -17,29 +17,28 @@ public class ApplicantsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (!PostJobServlet.isEmployer(req, resp)) {
+        jakarta.servlet.http.HttpSession session = req.getSession(false);
+        if (session == null || !"employer".equals(session.getAttribute("role"))) {
+            resp.sendRedirect(req.getContextPath() + "/login");
             return;
         }
 
-        int employerId = (int) req.getSession(false).getAttribute("userId");
-        int jobId = Integer.parseInt(req.getParameter("jobId"));
-        Job job;
-        try {
-            job = jobDAO.getJobById(jobId);
-            if (job != null && job.getEmployerId() != employerId) {
-                job = null;
+        int employerId = (int) session.getAttribute("userId");
+        String jobIdParam = req.getParameter("jobId");
+        
+        if (jobIdParam != null && !jobIdParam.isEmpty()) {
+            try {
+                int jobId = Integer.parseInt(jobIdParam);
+                Job job = jobDAO.getJobById(jobId);
+                if (job != null && job.getEmployerId() == employerId) {
+                    req.setAttribute("job", job);
+                }
+            } catch (Exception e) {
+                // Ignore or handle log
             }
-        } catch (RuntimeException e) {
-            job = InMemoryJobStore.getJobById(jobId, employerId);
-            req.setAttribute("databaseError", "Applicants are shown in demo mode because MySQL is not connected.");
         }
 
-        if (job == null) {
-            resp.sendRedirect(req.getContextPath() + "/employer/dashboard");
-            return;
-        }
-
-        req.setAttribute("job", job);
-        req.getRequestDispatcher("/pages/components/applicant-lists.jsp").forward(req, resp);
+        req.setAttribute("employerName", session.getAttribute("name"));
+        req.getRequestDispatcher("/employer/manage-applicants.jsp").forward(req, resp);
     }
 }

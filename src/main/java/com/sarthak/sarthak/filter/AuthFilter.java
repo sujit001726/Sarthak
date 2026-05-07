@@ -26,11 +26,31 @@ public class AuthFilter implements Filter {
 
         String path = httpRequest.getRequestURI();
         boolean isLoginPage = path.endsWith("login.jsp") || path.endsWith("login");
-        boolean isLoggedIn = (session != null && session.getAttribute("admin") != null);
+        
+        // Check if user is logged in
+        boolean isLoggedIn = (session != null && session.getAttribute("userId") != null);
+        
+        // Check if user is admin
+        boolean isAdmin = (session != null && "admin".equals(session.getAttribute("userRole")));
 
-        if (isLoggedIn || isLoginPage) {
+        if (isLoginPage) {
+            // Allow access to login page
             chain.doFilter(request, response);
+        } else if (isLoggedIn && isAdmin) {
+            // Admin user - allow access to admin pages
+            chain.doFilter(request, response);
+        } else if (isLoggedIn && !isAdmin) {
+            // Non-admin user trying to access admin pages - redirect to their dashboard
+            String userRole = (String) session.getAttribute("userRole");
+            if ("employer".equals(userRole)) {
+                httpResponse.sendRedirect(httpRequest.getContextPath() + "/employer/dashboard");
+            } else if ("job_seeker".equals(userRole)) {
+                httpResponse.sendRedirect(httpRequest.getContextPath() + "/jobseeker/dashboard");
+            } else {
+                httpResponse.sendRedirect(httpRequest.getContextPath() + "/login.jsp");
+            }
         } else {
+            // Not logged in - redirect to login
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/login.jsp");
         }
     }

@@ -23,7 +23,7 @@ public class LogoutServlet extends HttpServlet {
             session.invalidate();
         }
 
-        resp.sendRedirect(req.getContextPath() + "/login.jsp?logout=true");
+        resp.sendRedirect(req.getContextPath() + "/index.jsp?logout=true");
     }
 
     @Override

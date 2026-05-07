@@ -7,7 +7,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
-@WebServlet("/register")
+// Superseded by com.jobportal.controller.RegisterServlet
+// @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 
     @Override

@@ -27,19 +27,27 @@
                     <input type="text" placeholder="Search for jobs, candidates...">
                 </div>
                 <div class="user-profile">
-                    <img src="https://ui-avatars.com/api/?name=Sujit&background=2563eb&color=fff" alt="User">
-                    <div class="user-info"><span class="name">Sujit</span></div>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=1D3E35&color=fff" alt="User">
+                    <div class="user-info"><span class="name">Admin</span></div>
                     <i class="fas fa-chevron-down" style="font-size:0.7rem;color:var(--text-dim);"></i>
                 </div>
             </div>
         </header>
 
         <div class="content-area">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div class="welcome-banner-content">
+                    <h2>🎯 Dashboard Overview</h2>
+                    <p>Track your recruitment progress and manage candidates efficiently</p>
+                </div>
+            </div>
+
             <section class="stats-container">
                 <div class="stat-card">
                     <div class="stat-header">
                         <span class="stat-value">${jobCount}</span>
-                        <div class="stat-icon-mini" style="background:#eff6ff;color:#3b82f6;"><i class="fas fa-briefcase"></i></div>
+                        <div class="stat-icon-mini" style="background:#f0fdf4;color:#064e3b;"><i class="fas fa-briefcase"></i></div>
                     </div>
                     <span class="stat-label">All Jobs</span>
                     <a href="admin?action=jobs" class="stat-more">View More <i class="fas fa-arrow-right"></i></a>
@@ -47,7 +55,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <span class="stat-value">${userCount}</span>
-                        <div class="stat-icon-mini" style="background:#fdf2f8;color:#db2777;"><i class="fas fa-users"></i></div>
+                        <div class="stat-icon-mini" style="background:#ecfdf5;color:#059669;"><i class="fas fa-users"></i></div>
                     </div>
                     <span class="stat-label">Total Candidates</span>
                     <a href="admin?action=candidates" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
@@ -55,7 +63,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <span class="stat-value">${appCount}</span>
-                        <div class="stat-icon-mini" style="background:#f5f3ff;color:#7c3aed;"><i class="fas fa-file-alt"></i></div>
+                        <div class="stat-icon-mini" style="background:#f0fdfa;color:#0d9488;"><i class="fas fa-file-alt"></i></div>
                     </div>
                     <span class="stat-label">Total Applications</span>
                     <a href="admin?action=jobBoard" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
@@ -63,7 +71,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <span class="stat-value">${interviewCount}</span>
-                        <div class="stat-icon-mini" style="background:#fff7ed;color:#ea580c;"><i class="fas fa-video"></i></div>
+                        <div class="stat-icon-mini" style="background:#ecfccb;color:#65a30d;"><i class="fas fa-video"></i></div>
                     </div>
                     <span class="stat-label">Total Interviews</span>
                     <a href="admin?action=interviews" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
@@ -71,7 +79,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <span class="stat-value">${hiredCount}</span>
-                        <div class="stat-icon-mini" style="background:#f0fdf4;color:#16a34a;"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-icon-mini" style="background:#dcfce7;color:#166534;"><i class="fas fa-check-circle"></i></div>
                     </div>
                     <span class="stat-label">Total Hired</span>
                     <a href="admin?action=shortlisted" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
@@ -79,7 +87,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <span class="stat-value">${rejectedCount}</span>
-                        <div class="stat-icon-mini" style="background:#fef2f2;color:#dc2626;"><i class="fas fa-times-circle"></i></div>
+                        <div class="stat-icon-mini" style="background:#fef2f2;color:#991b1b;"><i class="fas fa-times-circle"></i></div>
                     </div>
                     <span class="stat-label">Total Rejected</span>
                     <a href="admin?action=candidates" class="stat-more">More Info <i class="fas fa-arrow-right"></i></a>
@@ -115,22 +123,25 @@
                     </div>
 
                     <div class="content-card">
-                        <div class="card-header"><h3>Top Experience Levels</h3></div>
+                        <div class="card-header">
+                            <h3>Top Experience Levels</h3>
+                            <span style="font-size:0.75rem;color:#4E7A6E;font-weight:600;">Last 30 days</span>
+                        </div>
                         <div class="progress-item">
                             <div class="progress-info"><span>Entry Level</span><span>45%</span></div>
-                            <div class="progress-bar"><div class="progress-fill" style="width:45%;background:#3b82f6;"></div></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width:45%;background:#064e3b;"></div></div>
                         </div>
                         <div class="progress-item">
                             <div class="progress-info"><span>Intermediate</span><span>30%</span></div>
-                            <div class="progress-bar"><div class="progress-fill" style="width:30%;background:#f59e0b;"></div></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width:30%;background:#0f766e;"></div></div>
                         </div>
                         <div class="progress-item">
                             <div class="progress-info"><span>Senior</span><span>15%</span></div>
-                            <div class="progress-bar"><div class="progress-fill" style="width:15%;background:#10b981;"></div></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width:15%;background:#14b8a6;"></div></div>
                         </div>
                         <div class="progress-item">
                             <div class="progress-info"><span>Expert</span><span>10%</span></div>
-                            <div class="progress-bar"><div class="progress-fill" style="width:10%;background:#7c3aed;"></div></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width:10%;background:#2dd4bf;"></div></div>
                         </div>
                     </div>
 
@@ -144,14 +155,14 @@
                             <canvas id="overviewChart"></canvas>
                             <div class="donut-center">
                                 <span class="val">12</span>
-                                <span class="lbl">Total Candidates</span>
+                                <span class="lbl" style="color: #064e3b; font-weight: 700;">Total Candidates</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Nepali Calendar -->
                     <div class="content-card" style="padding:0;overflow:hidden;">
-                        <div style="background:#1a3a8f;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:8px 12px;">
+                        <div style="background:#064e3b;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:8px 12px;">
                             <div id="np-bs-label" style="font-size:1rem;font-weight:700;letter-spacing:0.5px;"></div>
                             <div style="display:flex;align-items:center;gap:6px;">
                                 <button onclick="npPrev()" style="background:rgba(255,255,255,0.25);border:none;color:#fff;font-size:1.2rem;cursor:pointer;border-radius:3px;width:26px;height:26px;line-height:1;">&#8249;</button>
@@ -159,9 +170,9 @@
                                 <button onclick="npNext()" style="background:rgba(255,255,255,0.25);border:none;color:#fff;font-size:1.2rem;cursor:pointer;border-radius:3px;width:26px;height:26px;line-height:1;">&#8250;</button>
                             </div>
                         </div>
-                        <div id="np-day-hdr" style="display:grid;grid-template-columns:repeat(7,1fr);background:#2952c4;"></div>
-                        <div id="np-grid" style="display:grid;grid-template-columns:repeat(7,1fr);border-left:1px solid #d0d8f0;"></div>
-                        <div id="np-strip" style="background:#eef2ff;text-align:center;font-size:0.72rem;color:#1a3a8f;padding:4px;font-weight:600;border-top:1px solid #d0d8f0;"></div>
+                        <div id="np-day-hdr" style="display:grid;grid-template-columns:repeat(7,1fr);background:#0f5c4a;"></div>
+                        <div id="np-grid" style="display:grid;grid-template-columns:repeat(7,1fr);border-left:1px solid #d1fae5;"></div>
+                        <div id="np-strip" style="background:#f0fdf4;text-align:center;font-size:0.72rem;color:#064e3b;padding:4px;font-weight:600;border-top:1px solid #d1fae5;"></div>
                     </div>
 
 
@@ -283,14 +294,14 @@
             const cell=document.createElement('div');
             const isSat=(col%7===6);
             const isBlank=(col<startDay);
-            cell.style.cssText='border-right:1px solid #d0d8f0;border-bottom:1px solid #d0d8f0;min-height:48px;padding:2px 3px;position:relative;box-sizing:border-box;';
+            cell.style.cssText='border-right:1px solid #d1fae5;border-bottom:1px solid #d1fae5;min-height:48px;padding:2px 3px;position:relative;box-sizing:border-box;';
 
             if(!isBlank){
                 const bsDay=col-startDay+1;
                 const adDay=adCursor.getDate();
                 const isToday=(bsDay===todayBS.day&&month===todayBS.month&&year===todayBS.year);
 
-                if(isToday) cell.style.background='#1a3a8f';
+                if(isToday) cell.style.background='#064e3b';
 
                 // Large BS numeral (Devanagari)
                 const big=document.createElement('div');
@@ -299,13 +310,9 @@
 
                 // Small AD date bottom-right
                 const small=document.createElement('div');
-                small.style.cssText='font-size:0.62rem;color:'+(isToday?'#aac':'#2952c4')+';position:absolute;bottom:2px;right:3px;font-weight:600;';
+                small.style.cssText='font-size:0.62rem;color:'+(isToday?'#dcfce7':'#064e3b')+';position:absolute;bottom:2px;right:3px;font-weight:600;';
                 small.textContent=adDay;
 
-                if(!isToday){
-                    cell.onmouseover=()=>cell.style.background='#eef2ff';
-                    cell.onmouseout=()=>cell.style.background='';
-                }
                 cell.appendChild(big);
                 cell.appendChild(small);
                 adCursor.setDate(adCursor.getDate()+1);
@@ -331,7 +338,7 @@
             labels: ['Recommended','Shortlisted','Applicants','Interview','Rejected','Hired'],
             datasets: [{
                 data: [5,2,2,2,1,0],
-                backgroundColor: ['#2563eb','#3b82f6','#0ea5e9','#f59e0b','#ef4444','#10b981'],
+                backgroundColor: ['#064e3b','#0f766e','#14b8a6','#2dd4bf','#99f6e4','#f0fdfa'],
                 borderWidth: 0,
                 cutout: '80%'
             }]

@@ -7,7 +7,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
-@WebServlet("/login")
+// Superseded by com.jobportal.controller.LoginServlet
+// @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
     @Override

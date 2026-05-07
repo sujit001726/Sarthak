@@ -1,32 +1,33 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <header class="sticky top-0 z-[1000] bg-white border-b border-gray-100 shadow-[0_2px_15px_-3px_rgba(29,62,53,0.07)] before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[3px] before:bg-gradient-to-r before:from-primary before:to-secondary" id="main-header">
-    <div class="max-w-[1440px] mx-auto px-6 md:px-10 h-[70px] md:h-[80px] flex items-center justify-between gap-4">
+    <div class="w-full px-6 md:px-10 h-[70px] md:h-[80px] flex items-center justify-between gap-4">
 
-        <!-- Left: Logo + Search -->
-        <div class="flex items-center gap-4 md:gap-6 shrink-0">
+        <!-- Left: Logo -->
+        <div class="flex items-center shrink-0">
             <a href="${pageContext.request.contextPath}/index.jsp" class="flex items-center shrink-0 hover:scale-105 transition-transform duration-300" id="nav-logo">
                 <img src="${pageContext.request.contextPath}/images/logo.png"
                      alt="Sarthak Job Portal"
                      class="h-[50px] md:h-[65px] w-auto block object-contain">
             </a>
-            <div class="hidden lg:flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-lg px-3 py-1.5 w-[220px] transition-all hover:border-primary/40 hover:shadow-sm focus-within:bg-white focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/30 group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" class="text-gray-400 group-focus-within:text-primary transition-colors" viewBox="0 0 24 24">
-                    <path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" stroke-linecap="round"/>
-                </svg>
-                <input type="text" placeholder="Search jobs..." id="header-search-input" class="bg-transparent border-none outline-none text-[0.85rem] text-[#333] w-full font-['Inter'] placeholder:text-gray-400">
-            </div>
         </div>
 
-        <!-- Desktop Nav -->
-        <nav class="hidden lg:flex items-center ml-auto" id="main-nav">
+        <!-- Center: Search Bar -->
+        <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-2 bg-gray-50 border border-gray-100 rounded-xl px-4 py-2 w-[350px] transition-all hover:border-primary/40 hover:shadow-sm focus-within:bg-white focus-within:ring-4 focus-within:ring-primary/5 focus-within:border-primary/30 group">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" class="text-gray-400 group-focus-within:text-primary transition-colors" viewBox="0 0 24 24">
+                <path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" stroke-linecap="round"/>
+            </svg>
+            <input type="text" placeholder="Find your dream job..." id="header-search-input" class="bg-transparent border-none outline-none text-[0.88rem] text-[#1D3E35] w-full font-bold placeholder:text-gray-400 placeholder:font-medium">
+        </div>
 
+        <!-- Right: Desktop Nav + Profile -->
+        <nav class="hidden lg:flex items-center gap-4" id="main-nav">
             <div class="flex items-center gap-2">
-                <a href="${pageContext.request.contextPath}/index.jsp" id="nav-home" class="nav-item px-5 py-2 text-[#444] text-[0.95rem] font-bold hover:text-primary transition-all relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[2px] after:bg-primary after:transition-all hover:after:w-full hover:after:left-0">Home</a>
-                <a href="${pageContext.request.contextPath}/index.jsp" id="nav-jobs" class="nav-item px-5 py-2 text-[#444] text-[0.95rem] font-bold hover:text-primary transition-all relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[2px] after:bg-primary after:transition-all hover:after:w-full hover:after:left-0">Find Jobs</a>
-                <a href="#" id="nav-companies" class="nav-item px-5 py-2 text-[#444] text-[0.95rem] font-bold hover:text-primary transition-all relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[2px] after:bg-primary after:transition-all hover:after:w-full hover:after:left-0">Browse Companies</a>
+                <a href="${pageContext.request.contextPath}/index.jsp" id="nav-home" class="nav-item px-4 py-2 text-[#444] text-[0.92rem] font-bold hover:text-primary transition-all relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[2px] after:bg-primary after:transition-all hover:after:w-full hover:after:left-0">Home</a>
+                <a href="${pageContext.request.contextPath}/index.jsp" id="nav-jobs" class="nav-item px-4 py-2 text-[#444] text-[0.92rem] font-bold hover:text-primary transition-all relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[2px] after:bg-primary after:transition-all hover:after:w-full hover:after:left-0">Find Jobs</a>
+                <a href="#" id="nav-companies" class="nav-item px-4 py-2 text-[#444] text-[0.92rem] font-bold hover:text-primary transition-all relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-[2px] after:bg-primary after:transition-all hover:after:w-full hover:after:left-0">Companies</a>
                 
-                <div class="h-6 w-[1px] bg-gray-200 mx-3"></div>
+                <div class="h-6 w-[1px] bg-gray-200 mx-2"></div>
 
                 <c:choose>
                     <c:when test="${not empty sessionScope.userId}">
@@ -35,7 +36,7 @@
                             <div class="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center text-xs font-extrabold uppercase shadow-md shadow-primary/20" id="nav-avatar">
                                 <span id="avatar-initial"></span>
                             </div>
-                            <span class="text-[0.92rem] font-bold text-[#1a1a1a]">Me ▾</span>
+                            <span class="text-[0.9rem] font-bold text-[#1a1a1a]">Me ▾</span>
                             <div class="hidden group-hover:block absolute top-full right-0 bg-white border border-gray-100 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] min-w-[220px] z-[200] overflow-hidden mt-1 animate-fadeIn">
                                 <div class="p-5 border-b border-gray-50 bg-gray-50/50">
                                     <strong class="block text-[#1a1a1a] text-sm font-extrabold">${sessionScope.userName}</strong>
@@ -54,13 +55,11 @@
                         <!-- Right: Auth Links -->
                         <div class="flex items-center gap-4">
                             <a href="${pageContext.request.contextPath}/login.jsp" class="text-primary font-bold hover:text-secondary transition-colors px-2 py-1">Login</a>
-                            <span class="text-gray-300 font-medium">/</span>
                             <a href="${pageContext.request.contextPath}/register.jsp" class="bg-primary text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-secondary transition-all shadow-lg shadow-primary/20">Sign Up</a>
                         </div>
                     </c:otherwise>
                 </c:choose>
             </div>
-
             <script>
                 (function(){
                     var name = "${sessionScope.userName}";
@@ -71,7 +70,6 @@
                     }
                 })();
             </script>
-
         </nav>
 
         <!-- Mobile: Hamburger & Search Toggle -->
@@ -109,7 +107,12 @@
                         <c:when test="${not empty sessionScope.userId}">
                             <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-2xl mb-4">
                                 <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
-                                    ${sessionScope.userName.charAt(0).toUpperCase()}
+                                    <c:choose>
+                                        <c:when test="${not empty sessionScope.userName}">
+                                            ${sessionScope.userName.substring(0,1).toUpperCase()}
+                                        </c:when>
+                                        <c:otherwise>U</c:otherwise>
+                                    </c:choose>
                                 </div>
                                 <div class="overflow-hidden">
                                     <p class="font-bold text-[#1a1a1a] truncate text-sm">${sessionScope.userName}</p>
