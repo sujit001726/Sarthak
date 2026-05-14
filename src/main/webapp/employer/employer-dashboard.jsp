@@ -198,7 +198,7 @@
                                         <i class="fa-solid fa-envelope w-5"></i>
                                         <span>Messages</span>
                                     </a>
-                                    <a href="#"
+                                    <a href="${pageContext.request.contextPath}/employer/search-talent.jsp"
                                         class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
                                         <i class="fa-solid fa-magnifying-glass w-5"></i>
                                         <span>Search Talent</span>
@@ -210,17 +210,17 @@
                                 <p class="text-[0.6rem] font-black text-white/30 uppercase tracking-[0.2em] mb-6 px-4">
                                     Company</p>
                                 <nav>
-                                    <a href="#"
+                                    <a href="${pageContext.request.contextPath}/employer/company-profile.jsp"
                                         class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
                                         <i class="fa-solid fa-building w-5"></i>
                                         <span>Company Profile</span>
                                     </a>
-                                    <a href="#"
+                                    <a href="${pageContext.request.contextPath}/employer/billing-plans.jsp"
                                         class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
                                         <i class="fa-solid fa-credit-card w-5"></i>
                                         <span>Billing & Plans</span>
                                     </a>
-                                    <a href="#"
+                                    <a href="${pageContext.request.contextPath}/employer/settings.jsp"
                                         class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
                                         <i class="fa-solid fa-sliders w-5"></i>
                                         <span>Settings</span>
@@ -245,6 +245,12 @@
                         <%@ include file="/includes/header.jsp" %>
 
                         <main class="p-6 lg:p-8 flex flex-col gap-6 w-full max-w-full">
+
+                        <c:if test="${not empty flash or not empty successMessage}">
+                            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-xl relative mb-4 animate-fadeIn" role="alert">
+                                <span class="block sm:inline font-bold">${not empty flash ? flash : successMessage}</span>
+                            </div>
+                        </c:if>
 
                         <!-- Quick Actions Bar -->
                         <div
@@ -595,14 +601,15 @@
                                 </div>
                             </div>
                         </div>
+                        </main>
 
-                        <!-- Global Footer (Inside scrollable region) -->
-                        <%@ include file="/includes/footer.jsp" %>
+                        <div class="bg-[#1D3E35] pb-20">
+                            <!-- Global Footer (Inside scrollable region) -->
+                            <%@ include file="/includes/footer.jsp" %>
+                        </div>
                     </div>
                 </div>
 
         </body>
-
-        </html>
 
         </html>

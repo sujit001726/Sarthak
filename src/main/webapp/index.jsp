@@ -84,20 +84,21 @@
                 </p>
 
                 <!-- Floating Search Bar -->
-                <div class="max-w-[650px] mx-auto bg-white rounded-2xl shadow-[0_15px_50px_rgba(29,62,53,0.06)] p-1 flex flex-col md:flex-row gap-1 border border-gray-50">
+                <form action="${pageContext.request.contextPath}/job-market" method="GET" class="max-w-[650px] mx-auto bg-white rounded-2xl shadow-[0_15px_50px_rgba(29,62,53,0.06)] p-1 flex flex-col md:flex-row gap-1 border border-gray-50">
                     <div class="flex items-center gap-2.5 flex-1 px-3 py-2.5">
                         <svg class="text-gray-300" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                        <input type="text" placeholder="Job title or keyword" class="w-full text-[0.88rem] font-medium outline-none placeholder:text-gray-300">
+                        <input type="text" name="q" placeholder="Job title or keyword" class="w-full text-[0.88rem] font-medium outline-none placeholder:text-gray-300">
                     </div>
                     <div class="hidden md:block w-px bg-gray-100 self-stretch my-2"></div>
                     <div class="flex items-center gap-2.5 flex-1 px-3 py-2.5">
                         <svg class="text-gray-300" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <input type="text" placeholder="Kathmandu, Nepal" class="w-full text-[0.88rem] font-medium outline-none placeholder:text-gray-300">
+                        <input type="text" placeholder="Location (optional)" class="w-full text-[0.88rem] font-medium outline-none placeholder:text-gray-300">
                     </div>
-                    <button class="bg-primary hover:bg-secondary text-white font-bold px-6 md:px-8 py-2.5 rounded-xl text-[0.88rem] transition-all duration-300 shadow-lg shadow-primary/20">
+                    <button type="submit" class="bg-primary hover:bg-secondary text-white font-bold px-6 md:px-8 py-2.5 rounded-xl text-[0.88rem] transition-all duration-300 shadow-lg shadow-primary/20">
                         Search
                     </button>
-                </div>
+                </form>
+
             </div>
         </section>
 
@@ -483,7 +484,10 @@
                 c.classList.remove('active');
             });
             card.classList.add('active');
+            var categoryName = card.querySelector('h3').innerText.replace(/\n/g, ' ');
+            window.location.href = "${pageContext.request.contextPath}/job-market?q=" + encodeURIComponent(categoryName);
         }
+
     </script>
 </body>
 </html>

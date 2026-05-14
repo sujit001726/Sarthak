@@ -231,144 +231,105 @@
                         <!-- Global Header (Inside scrollable region) -->
                         <%@ include file="/includes/header.jsp" %>
 
-                        <main class="max-w-4xl mx-auto px-6 py-12 w-full">
-                    <!-- Navigation Breadcrumb -->
-                    <div
-                        class="flex items-center gap-2 mb-8 text-[0.7rem] font-bold text-gray-400 uppercase tracking-widest">
-                        <a href="${pageContext.request.contextPath}/employer/dashboard"
-                            class="hover:text-primary transition-colors">Dashboard</a>
-                        <i class="fa-solid fa-chevron-right text-[0.5rem]"></i>
-                        <span class="text-primary italic">${formTitle}</span>
-                    </div>
+                        <main class="max-w-5xl mx-auto px-6 py-12 w-full flex-1">
+                            <!-- Navigation Breadcrumb -->
+                            <div class="flex items-center gap-2 mb-8 text-[0.7rem] font-bold text-gray-400 uppercase tracking-widest">
+                                <a href="${pageContext.request.contextPath}/employer/dashboard" class="hover:text-primary transition-colors">Dashboard</a>
+                                <i class="fa-solid fa-chevron-right text-[0.5rem]"></i>
+                                <span class="text-primary italic">${formTitle}</span>
+                            </div>
 
-                    <div class="flex flex-col gap-8">
-                        <div class="flex items-end justify-between">
-                            <div>
-                                <h1 class="text-4xl font-black text-primary italic leading-none tracking-tighter">
-                                    ${formTitle}</h1>
-                                <p class="text-sm font-bold text-gray-400 mt-2">Design your next high-impact role at
-                                    Sarthak</p>
-                            </div>
-                            <div class="hidden md:flex items-center gap-4 text-right">
-                                <div
-                                    class="w-12 h-12 rounded-2xl bg-white border border-gray-100 flex items-center justify-center text-primary shadow-sm">
-                                    <i class="fa-solid fa-feather-pointed text-xl"></i>
+                            <div class="flex flex-col gap-8">
+                                <div class="flex items-end justify-between">
+                                    <div>
+                                        <h1 class="text-4xl font-black text-primary italic leading-none tracking-tighter">${formTitle}</h1>
+                                        <p class="text-sm font-bold text-gray-400 mt-2">Design your next high-impact role at Sarthak</p>
+                                    </div>
+                                    <div class="hidden md:flex items-center gap-4 text-right">
+                                        <div class="w-12 h-12 rounded-2xl bg-white border border-gray-100 flex items-center justify-center text-primary shadow-sm">
+                                            <i class="fa-solid fa-feather-pointed text-xl"></i>
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <c:if test="${not empty databaseError}">
+                                    <div class="bg-red-50 border border-red-200 p-4 rounded-2xl flex items-center gap-4">
+                                        <i class="fa-solid fa-circle-exclamation text-red-500"></i>
+                                        <p class="text-sm font-bold text-red-800">${databaseError}</p>
+                                    </div>
+                                </c:if>
+
+                                <form action="${formAction}" method="POST" class="glass-card rounded-[2.5rem] p-10 shadow-2xl shadow-primary/5 border border-white">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        <!-- Form contents... (I will keep them but fix the nesting) -->
+                                        <div class="flex flex-col gap-6 md:col-span-2">
+                                            <div>
+                                                <label class="label-style">Job Title</label>
+                                                <input type="text" name="title" value="${job.title}" required placeholder="e.g. Senior Frontend Engineer" class="form-input w-full p-4 rounded-2xl text-sm font-semibold bg-white/50">
+                                            </div>
+                                            <div>
+                                                <label class="label-style">Detailed Description</label>
+                                                <textarea name="description" required rows="6" placeholder="Outline the responsibilities, requirements, and benefits..." class="form-input w-full p-4 rounded-2xl text-sm font-semibold bg-white/50 resize-none">${job.description}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col gap-6">
+                                            <div>
+                                                <label class="label-style">Location</label>
+                                                <div class="relative">
+                                                    <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                                    <input type="text" name="location" value="${job.location}" required placeholder="e.g. Remote, Kathmandu" class="form-input w-full pl-10 pr-4 py-4 rounded-2xl text-sm font-semibold bg-white/50">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label class="label-style">Salary Range (Monthly)</label>
+                                                <div class="relative">
+                                                    <i class="fa-solid fa-money-bill-wave absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                                                    <input type="text" name="salaryRange" value="${job.salaryRange}" placeholder="e.g. 50k - 80k" class="form-input w-full pl-10 pr-4 py-4 rounded-2xl text-sm font-semibold bg-white/50">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col gap-6">
+                                            <div class="grid grid-cols-2 gap-4">
+                                                <div>
+                                                    <label class="label-style">Job Type</label>
+                                                    <select name="jobType" required class="form-input w-full p-4 rounded-2xl text-sm font-bold bg-white/50 appearance-none">
+                                                        <option value="full-time" ${job.jobType=='full-time' ? 'selected' : ''}>Full-time</option>
+                                                        <option value="part-time" ${job.jobType=='part-time' ? 'selected' : ''}>Part-time</option>
+                                                        <option value="contract" ${job.jobType=='contract' ? 'selected' : ''}>Contract</option>
+                                                        <option value="internship" ${job.jobType=='internship' ? 'selected' : ''}>Internship</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label class="label-style">Status</label>
+                                                    <select name="status" required class="form-input w-full p-4 rounded-2xl text-sm font-bold bg-white/50 appearance-none">
+                                                        <option value="active" ${job.status=='active' ? 'selected' : ''}>Active</option>
+                                                        <option value="draft" ${job.status=='draft' ? 'selected' : ''}>Draft</option>
+                                                        <option value="closed" ${job.status=='closed' ? 'selected' : ''}>Closed</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label class="label-style">Application Deadline</label>
+                                                <input type="date" name="deadline" value="${job.deadline}" required class="form-input w-full p-4 rounded-2xl text-sm font-bold bg-white/50">
+                                            </div>
+                                        </div>
+                                        <div class="md:col-span-2 pt-8 border-t border-gray-100 flex items-center justify-between gap-4 mt-4">
+                                            <a href="${pageContext.request.contextPath}/employer/dashboard" class="px-8 py-4 rounded-2xl text-[0.7rem] font-black text-gray-400 hover:text-primary transition-all flex items-center gap-2 uppercase tracking-widest">
+                                                <i class="fa-solid fa-xmark"></i> Cancel
+                                            </a>
+                                            <button type="submit" class="bg-primary text-white px-12 py-4 rounded-2xl text-[0.75rem] font-black shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-3">
+                                                <i class="fa-solid fa-paper-plane"></i> ${submitLabel}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
+                        </main>
+
+                        <div class="bg-[#1D3E35] pb-20">
+                            <!-- Global Footer (Inside scrollable region) -->
+                            <%@ include file="/includes/footer.jsp" %>
                         </div>
-
-                        <c:if test="${not empty databaseError}">
-                            <div class="bg-red-50 border border-red-200 p-4 rounded-2xl flex items-center gap-4">
-                                <i class="fa-solid fa-circle-exclamation text-red-500"></i>
-                                <p class="text-sm font-bold text-red-800">${databaseError}</p>
-                            </div>
-                        </c:if>
-
-                        <form action="${formAction}" method="POST"
-                            class="glass-card rounded-[2.5rem] p-10 shadow-2xl shadow-primary/5 border border-white">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-                                <!-- Left Section: Main Info -->
-                                <div class="flex flex-col gap-6 md:col-span-2">
-                                    <div>
-                                        <label class="label-style">Job Title</label>
-                                        <input type="text" name="title" value="${job.title}" required
-                                            placeholder="e.g. Senior Frontend Engineer"
-                                            class="form-input w-full p-4 rounded-2xl text-sm font-semibold bg-white/50">
-                                    </div>
-
-                                    <div>
-                                        <label class="label-style">Detailed Description</label>
-                                        <textarea name="description" required rows="6"
-                                            placeholder="Outline the responsibilities, requirements, and benefits..."
-                                            class="form-input w-full p-4 rounded-2xl text-sm font-semibold bg-white/50 resize-none">${job.description}</textarea>
-                                    </div>
-                                </div>
-
-                                <!-- Right Section: Details -->
-                                <div class="flex flex-col gap-6">
-                                    <div>
-                                        <label class="label-style">Location</label>
-                                        <div class="relative">
-                                            <i
-                                                class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-                                            <input type="text" name="location" value="${job.location}" required
-                                                placeholder="e.g. Remote, Kathmandu"
-                                                class="form-input w-full pl-10 pr-4 py-4 rounded-2xl text-sm font-semibold bg-white/50">
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label class="label-style">Salary Range (Monthly)</label>
-                                        <div class="relative">
-                                            <i
-                                                class="fa-solid fa-money-bill-wave absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-                                            <input type="text" name="salaryRange" value="${job.salaryRange}"
-                                                placeholder="e.g. 50k - 80k"
-                                                class="form-input w-full pl-10 pr-4 py-4 rounded-2xl text-sm font-semibold bg-white/50">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="flex flex-col gap-6">
-                                    <div class="grid grid-cols-2 gap-4">
-                                        <div>
-                                            <label class="label-style">Job Type</label>
-                                            <select name="jobType" required
-                                                class="form-input w-full p-4 rounded-2xl text-sm font-bold bg-white/50 appearance-none">
-                                                <option value="full-time" ${job.jobType=='full-time' ? 'selected' : ''
-                                                    }>Full-time</option>
-                                                <option value="part-time" ${job.jobType=='part-time' ? 'selected' : ''
-                                                    }>Part-time</option>
-                                                <option value="contract" ${job.jobType=='contract' ? 'selected' : '' }>
-                                                    Contract</option>
-                                                <option value="internship" ${job.jobType=='internship' ? 'selected' : ''
-                                                    }>Internship</option>
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <label class="label-style">Status</label>
-                                            <select name="status" required
-                                                class="form-input w-full p-4 rounded-2xl text-sm font-bold bg-white/50 appearance-none">
-                                                <option value="active" ${job.status=='active' ? 'selected' : '' }>Active
-                                                </option>
-                                                <option value="draft" ${job.status=='draft' ? 'selected' : '' }>Draft
-                                                </option>
-                                                <option value="closed" ${job.status=='closed' ? 'selected' : '' }>Closed
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label class="label-style">Application Deadline</label>
-                                        <input type="date" name="deadline" value="${job.deadline}" required
-                                            class="form-input w-full p-4 rounded-2xl text-sm font-bold bg-white/50">
-                                    </div>
-                                </div>
-
-                                <!-- Actions -->
-                                <div
-                                    class="md:col-span-2 pt-8 border-t border-gray-100 flex items-center justify-between gap-4 mt-4">
-                                    <a href="${pageContext.request.contextPath}/employer/dashboard"
-                                        class="px-8 py-4 rounded-2xl text-[0.7rem] font-black text-gray-400 hover:text-primary transition-all flex items-center gap-2 uppercase tracking-widest">
-                                        <i class="fa-solid fa-xmark"></i>
-                                        Cancel
-                                    </a>
-                                    <button type="submit"
-                                        class="bg-primary text-white px-12 py-4 rounded-2xl text-[0.75rem] font-black shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-3">
-                                        <i class="fa-solid fa-paper-plane"></i>
-                                        ${submitLabel}
-                                    </button>
-                                </div>
-
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                        <!-- Global Footer (Inside scrollable region) -->
-                        <%@ include file="/includes/footer.jsp" %>
                     </div>
                 </div>
 

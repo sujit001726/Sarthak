@@ -20,7 +20,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
-@WebServlet("/admin")
+// @WebServlet("/admin")
 public class AdminServlet extends HttpServlet {
 
     private final JobDAOInterface jobDAO           = new JobDAOImpl();

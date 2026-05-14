@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBConnection {
     // Ensure this matches your MySQL database name
-    private static final String URL = "jdbc:mysql://localhost:3306/sarthak_db?useSSL=false&allowPublicKeyRetrieval=true";
+    private static final String URL = "jdbc:mysql://localhost:3306/sarthak_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private static final String USER = "root";
     
     // IMPORTANT: Change this to your actual MySQL password (e.g., "", "root", "admin123")

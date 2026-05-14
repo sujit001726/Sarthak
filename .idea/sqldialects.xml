@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/CHECK_AND_FIX_DATABASE.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/FRIEND_SCHEMA.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/MESSAGING_SCHEMA.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/NOTIFICATION_SCHEMA.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/SETUP_DATABASE.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/UPDATE_DATABASE_IMAGES.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/UPDATE_PROFILE_SCHEMA.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/src/main/Database.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/sql/employer_schema.sql" dialect="MariaDB" />
   </component>
 </project>

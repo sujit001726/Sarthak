@@ -182,7 +182,7 @@
                                         <i class="fa-solid fa-users-viewfinder w-5 text-accent"></i>
                                         <span>Manage Applicants</span>
                                     </a>
-                                    <a href="#"
+                                    <a href="${pageContext.request.contextPath}/employer/search-talent.jsp"
                                         class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
                                         <i class="fa-solid fa-magnifying-glass w-5"></i>
                                         <span>Search Talent</span>
@@ -194,17 +194,17 @@
                                 <p class="text-[0.6rem] font-black text-white/30 uppercase tracking-[0.2em] mb-6 px-4">
                                     Company</p>
                                 <nav>
-                                    <a href="#"
+                                    <a href="${pageContext.request.contextPath}/employer/company-profile.jsp"
                                         class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
                                         <i class="fa-solid fa-building w-5"></i>
                                         <span>Company Profile</span>
                                     </a>
-                                    <a href="#"
+                                    <a href="${pageContext.request.contextPath}/employer/billing-plans.jsp"
                                         class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
                                         <i class="fa-solid fa-credit-card w-5"></i>
                                         <span>Billing & Plans</span>
                                     </a>
-                                    <a href="#"
+                                    <a href="${pageContext.request.contextPath}/employer/settings.jsp"
                                         class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
                                         <i class="fa-solid fa-sliders w-5"></i>
                                         <span>Settings</span>
@@ -251,7 +251,7 @@
                                         <p
                                             class="text-[0.6rem] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">
                                             Total</p>
-                                        <h3 class="text-xl font-black text-dark leading-none">1,248</h3>
+                                        <h3 class="text-xl font-black text-dark leading-none">${applications != null ? applications.size() : 0}</h3>
                                     </div>
                                 </div>
                                 <div
@@ -300,202 +300,132 @@
 
                             <!-- Applicants Grid -->
                             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-
-                                <!-- Applicant Card 1 -->
-                                <div
-                                    class="applicant-card bg-white border border-gray-100 rounded-[2.5rem] p-8 flex flex-col gap-6 relative overflow-hidden group">
-                                    <!-- AI Match Score Badge -->
-                                    <div class="absolute top-6 right-6 flex flex-col items-end">
-                                        <div
-                                            class="bg-accent/10 text-accent text-[0.65rem] font-black px-3 py-1 rounded-full border border-accent/20">
-                                            98% MATCH</div>
-                                    </div>
-
-                                    <div class="flex items-center gap-5">
-                                        <div
-                                            class="w-16 h-16 bg-primary rounded-[1.5rem] flex items-center justify-center text-white text-2xl font-black italic shadow-xl shadow-primary/20">
-                                            S</div>
-                                        <div>
-                                            <h3 class="text-lg font-black text-dark leading-none">Sujit Shaha</h3>
-                                            <p class="text-xs font-bold text-gray-400 mt-1 uppercase tracking-tighter">
-                                                Applied for: <span class="text-primary italic">Senior Frontend
-                                                    Engineer</span></p>
+                                <c:choose>
+                                    <c:when test="${empty applications}">
+                                        <div class="col-span-full bg-white rounded-3xl p-12 text-center border border-gray-100 shadow-sm flex flex-col items-center justify-center">
+                                            <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-gray-300 text-3xl mb-4">
+                                                <i class="fa-solid fa-users"></i>
+                                            </div>
+                                            <h3 class="text-xl font-black text-dark mb-2">No Applicants Yet</h3>
+                                            <p class="text-gray-500 text-sm max-w-md mx-auto font-medium">When candidates apply to your jobs, they will appear here.</p>
                                         </div>
-                                    </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach var="app" items="${applications}">
+                                            <div class="applicant-card bg-white border border-gray-100 rounded-[2.5rem] p-8 flex flex-col gap-6 relative overflow-hidden group">
+                                                <div class="absolute top-6 right-6 flex flex-col items-end">
+                                                    <div class="bg-accent/10 text-accent text-[0.65rem] font-black px-3 py-1 rounded-full border border-accent/20 uppercase">
+                                                        ${app.status}
+                                                    </div>
+                                                </div>
 
-                                    <div class="grid grid-cols-2 gap-4 py-4 border-y border-gray-50">
-                                        <div>
-                                            <p
-                                                class="text-[0.6rem] font-black text-gray-300 uppercase tracking-widest mb-1">
-                                                Experience</p>
-                                            <p class="text-xs font-black text-dark italic">6.5 Years</p>
-                                        </div>
-                                        <div>
-                                            <p
-                                                class="text-[0.6rem] font-black text-gray-300 uppercase tracking-widest mb-1">
-                                                Expected</p>
-                                            <p class="text-xs font-black text-dark italic">रु 150k - 180k</p>
-                                        </div>
-                                    </div>
+                                                <div class="flex items-center gap-5">
+                                                    <div class="w-16 h-16 bg-primary rounded-[1.5rem] flex items-center justify-center text-white text-2xl font-black italic shadow-xl shadow-primary/20">
+                                                        ${not empty app.candidateName ? app.candidateName.substring(0,1).toUpperCase() : 'C'}
+                                                    </div>
+                                                    <div>
+                                                        <h3 class="text-lg font-black text-dark leading-none">${app.candidateName}</h3>
+                                                        <p class="text-xs font-bold text-gray-400 mt-1 uppercase tracking-tighter">
+                                                            Applied for: <span class="text-primary italic">${app.jobTitle}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
 
-                                    <div class="flex flex-wrap gap-2">
-                                        <span
-                                            class="bg-surface px-3 py-1 rounded-lg text-[0.55rem] font-black text-secondary uppercase tracking-wider">React</span>
-                                        <span
-                                            class="bg-surface px-3 py-1 rounded-lg text-[0.55rem] font-black text-secondary uppercase tracking-wider">Node.js</span>
-                                        <span
-                                            class="bg-surface px-3 py-1 rounded-lg text-[0.55rem] font-black text-secondary uppercase tracking-wider">TypeScript</span>
-                                    </div>
+                                                <div class="py-4 border-y border-gray-50">
+                                                    <p class="text-[0.6rem] font-black text-gray-300 uppercase tracking-widest mb-1">Email / Contact</p>
+                                                    <p class="text-xs font-black text-dark italic">${app.candidateEmail}</p>
+                                                </div>
 
-                                    <div class="flex items-center gap-3 mt-2">
-                                        <button
-                                            class="flex-1 bg-primary text-white py-3 rounded-2xl text-[0.7rem] font-black hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-primary/20">View
-                                            Portfolio</button>
-                                        <button
-                                            class="w-12 h-12 flex items-center justify-center bg-surface text-primary rounded-2xl hover:bg-primary hover:text-white transition-all">
-                                            <i class="fa-solid fa-envelope"></i>
-                                        </button>
-                                        <button
-                                            class="w-12 h-12 flex items-center justify-center bg-red-50 text-red-500 rounded-2xl hover:bg-red-500 hover:text-white transition-all">
-                                            <i class="fa-solid fa-xmark"></i>
-                                        </button>
-                                    </div>
-                                </div>
+                                                <div class="flex-1">
+                                                    <p class="text-[0.6rem] font-black text-gray-300 uppercase tracking-widest mb-1">Cover Note</p>
+                                                    <p class="text-xs font-medium text-gray-500 line-clamp-3">${not empty app.coverNote ? app.coverNote : 'No cover note provided.'}</p>
+                                                </div>
 
-                                <!-- Applicant Card 2 -->
-                                <div
-                                    class="applicant-card bg-white border border-gray-100 rounded-[2.5rem] p-8 flex flex-col gap-6 relative overflow-hidden group">
-                                    <div class="absolute top-6 right-6 flex flex-col items-end">
-                                        <div
-                                            class="bg-amber-400/10 text-amber-600 text-[0.65rem] font-black px-3 py-1 rounded-full border border-amber-400/20">
-                                            85% MATCH</div>
-                                    </div>
-
-                                    <div class="flex items-center gap-5">
-                                        <div
-                                            class="w-16 h-16 bg-secondary rounded-[1.5rem] flex items-center justify-center text-white text-2xl font-black italic shadow-xl shadow-secondary/20">
-                                            N</div>
-                                        <div>
-                                            <h3 class="text-lg font-black text-dark leading-none">Narayani</h3>
-                                            <p class="text-xs font-bold text-gray-400 mt-1 uppercase tracking-tighter">
-                                                Applied for: <span class="text-primary italic">UI/UX Designer</span></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="grid grid-cols-2 gap-4 py-4 border-y border-gray-50">
-                                        <div>
-                                            <p
-                                                class="text-[0.6rem] font-black text-gray-300 uppercase tracking-widest mb-1">
-                                                Experience</p>
-                                            <p class="text-xs font-black text-dark italic">3 Years</p>
-                                        </div>
-                                        <div>
-                                            <p
-                                                class="text-[0.6rem] font-black text-gray-300 uppercase tracking-widest mb-1">
-                                                Expected</p>
-                                            <p class="text-xs font-black text-dark italic">रु 80k - 100k</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex flex-wrap gap-2">
-                                        <span
-                                            class="bg-surface px-3 py-1 rounded-lg text-[0.55rem] font-black text-secondary uppercase tracking-wider">Figma</span>
-                                        <span
-                                            class="bg-surface px-3 py-1 rounded-lg text-[0.55rem] font-black text-secondary uppercase tracking-wider">Adobe
-                                            XD</span>
-                                    </div>
-
-                                    <div class="flex items-center gap-3 mt-2">
-                                        <button
-                                            class="flex-1 bg-primary text-white py-3 rounded-2xl text-[0.7rem] font-black hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-primary/20">View
-                                            Portfolio</button>
-                                        <button
-                                            class="w-12 h-12 flex items-center justify-center bg-surface text-primary rounded-2xl hover:bg-primary hover:text-white transition-all">
-                                            <i class="fa-solid fa-envelope"></i>
-                                        </button>
-                                        <button
-                                            class="w-12 h-12 flex items-center justify-center bg-red-50 text-red-500 rounded-2xl hover:bg-red-500 hover:text-white transition-all">
-                                            <i class="fa-solid fa-xmark"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <!-- Applicant Card 3 -->
-                                <div
-                                    class="applicant-card bg-white border border-gray-100 rounded-[2.5rem] p-8 flex flex-col gap-6 relative overflow-hidden group">
-                                    <div class="absolute top-6 right-6 flex flex-col items-end">
-                                        <div
-                                            class="bg-accent/10 text-accent text-[0.65rem] font-black px-3 py-1 rounded-full border border-accent/20">
-                                            92% MATCH</div>
-                                    </div>
-
-                                    <div class="flex items-center gap-5">
-                                        <div
-                                            class="w-16 h-16 bg-accent rounded-[1.5rem] flex items-center justify-center text-primary text-2xl font-black italic shadow-xl shadow-accent/20">
-                                            A</div>
-                                        <div>
-                                            <h3 class="text-lg font-black text-dark leading-none">Anish Regmi</h3>
-                                            <p class="text-xs font-bold text-gray-400 mt-1 uppercase tracking-tighter">
-                                                Applied for: <span class="text-primary italic">Backend Developer</span>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="grid grid-cols-2 gap-4 py-4 border-y border-gray-50">
-                                        <div>
-                                            <p
-                                                class="text-[0.6rem] font-black text-gray-300 uppercase tracking-widest mb-1">
-                                                Experience</p>
-                                            <p class="text-xs font-black text-dark italic">4 Years</p>
-                                        </div>
-                                        <div>
-                                            <p
-                                                class="text-[0.6rem] font-black text-gray-300 uppercase tracking-widest mb-1">
-                                                Expected</p>
-                                            <p class="text-xs font-black text-dark italic">रु 120k - 150k</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex flex-wrap gap-2">
-                                        <span
-                                            class="bg-surface px-3 py-1 rounded-lg text-[0.55rem] font-black text-secondary uppercase tracking-wider">Java</span>
-                                        <span
-                                            class="bg-surface px-3 py-1 rounded-lg text-[0.55rem] font-black text-secondary uppercase tracking-wider">Spring
-                                            Boot</span>
-                                        <span
-                                            class="bg-surface px-3 py-1 rounded-lg text-[0.55rem] font-black text-secondary uppercase tracking-wider">MySQL</span>
-                                    </div>
-
-                                    <div class="flex items-center gap-3 mt-2">
-                                        <button
-                                            class="flex-1 bg-primary text-white py-3 rounded-2xl text-[0.7rem] font-black hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-primary/20">View
-                                            Portfolio</button>
-                                        <button
-                                            class="w-12 h-12 flex items-center justify-center bg-surface text-primary rounded-2xl hover:bg-primary hover:text-white transition-all">
-                                            <i class="fa-solid fa-envelope"></i>
-                                        </button>
-                                        <button
-                                            class="w-12 h-12 flex items-center justify-center bg-red-50 text-red-500 rounded-2xl hover:bg-red-500 hover:text-white transition-all">
-                                            <i class="fa-solid fa-xmark"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <!-- Load More / Pagination -->
-                            <div class="flex items-center justify-center mt-6">
-                                <button
-                                    class="px-10 py-4 bg-surface border border-gray-100 rounded-2xl text-[0.75rem] font-black text-primary hover:bg-primary hover:text-white transition-all italic tracking-tighter">Load
-                                    More Candidates (24 Left)</button>
+                                                <div class="flex items-center gap-3 mt-2">
+                                                    <c:choose>
+                                                        <c:when test="${not empty app.candidateUserId}">
+                                                            <a href="${pageContext.request.contextPath}/profile?userId=${app.candidateUserId}" class="flex-1 bg-primary text-white py-3 rounded-2xl text-[0.7rem] font-black hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-primary/20 text-center flex items-center justify-center">
+                                                                View Profile
+                                                            </a>
+                                                            <a href="${pageContext.request.contextPath}/messages?chatWith=${app.candidateUserId}" class="w-12 h-12 flex items-center justify-center bg-surface text-primary rounded-2xl hover:bg-primary hover:text-white transition-all">
+                                                                <i class="fa-solid fa-envelope"></i>
+                                                            </a>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <button class="flex-1 bg-gray-300 text-white py-3 rounded-2xl text-[0.7rem] font-black cursor-not-allowed text-center" title="User has not registered an account">
+                                                                No Profile
+                                                            </button>
+                                                            <button class="w-12 h-12 flex items-center justify-center bg-gray-100 text-gray-400 rounded-2xl cursor-not-allowed" title="User has not registered an account">
+                                                                <i class="fa-solid fa-envelope"></i>
+                                                            </button>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <button onclick="updateStatus(${app.applicationId}, 'rejected', this)" class="w-12 h-12 flex items-center justify-center bg-red-50 text-red-500 rounded-2xl hover:bg-red-500 hover:text-white transition-all" title="Reject Candidate">
+                                                        <i class="fa-solid fa-xmark"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
+                        </main>
 
-                        <!-- Global Footer (Inside scrollable region) -->
-                        <%@ include file="/includes/footer.jsp" %>
+                        <div class="bg-[#1D3E35] pb-20">
+                            <!-- Global Footer (Inside scrollable region) -->
+                            <%@ include file="/includes/footer.jsp" %>
+                        </div>
                     </div>
-                </div>
+            </div>
 
+            <!-- Scripts -->
+            <script>
+                function updateStatus(applicationId, status, buttonElement) {
+                    if (!confirm("Are you sure you want to change this candidate's status to '" + status + "'?")) {
+                        return;
+                    }
+
+                    // Get context path
+                    const contextPath = '${pageContext.request.contextPath}';
+
+                    fetch(contextPath + '/employer/applicants/status', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: 'applicationId=' + applicationId + '&status=' + encodeURIComponent(status)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Update the UI
+                            const card = buttonElement.closest('.applicant-card');
+                            const statusBadge = card.querySelector('.text-accent');
+                            
+                            statusBadge.innerText = status;
+                            
+                            if (status === 'rejected') {
+                                statusBadge.classList.replace('text-accent', 'text-red-500');
+                                statusBadge.classList.replace('bg-accent/10', 'bg-red-50');
+                                statusBadge.classList.replace('border-accent/20', 'border-red-200');
+                                
+                                // Disable reject button
+                                buttonElement.disabled = true;
+                                buttonElement.classList.replace('hover:bg-red-500', 'opacity-50');
+                                buttonElement.classList.replace('hover:text-white', 'opacity-50');
+                                buttonElement.classList.add('cursor-not-allowed');
+                            }
+                        } else {
+                            alert("Failed to update status.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("An error occurred while updating status.");
+                    });
+                }
+            </script>
         </body>
 
         </html>

@@ -115,13 +115,7 @@ CREATE TABLE assessments (
     FOREIGN KEY (quiz_id)      REFERENCES quizzes(id)    ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- 11. TRAITS TABLE
-CREATE TABLE traits (
-    id          INT AUTO_INCREMENT PRIMARY KEY,
-    name        VARCHAR(100) NOT NULL UNIQUE,
-    description TEXT         DEFAULT NULL,
-    created_at  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 -- 12. INTERVIEW TEMPLATES TABLE
 CREATE TABLE interview_templates (

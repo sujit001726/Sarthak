@@ -28,7 +28,7 @@ public class MessageServlet extends HttpServlet {
         try {
             int userId = (int) session.getAttribute("userId");
             String userRole = (String) session.getAttribute("role");
-            req.setAttribute("userId", userId);
+            req.setAttribute("sessionUserId", userId);
             req.setAttribute("userRole", userRole);
             
             String otherUserIdStr = req.getParameter("userId");
@@ -44,6 +44,12 @@ public class MessageServlet extends HttpServlet {
                     req.setAttribute("chatHistory", chatHistory);
                     req.setAttribute("activeChatId", otherUserId);
                     
+                    com.jobportal.dao.UserDAO userDAO = new com.jobportal.dao.UserDAO();
+                    com.jobportal.model.User otherUser = userDAO.getUserById(otherUserId);
+                    if (otherUser != null) {
+                        req.setAttribute("activeChatName", otherUser.getFullName());
+                    }
+                    
                     // Mark messages as read
                     for (Message msg : chatHistory) {
                         if (msg.getReceiverId() == userId && !msg.isRead()) {
@@ -57,7 +63,7 @@ public class MessageServlet extends HttpServlet {
 
             req.getRequestDispatcher("/messages.jsp").forward(req, resp);
         } catch (Exception e) {
-            e.printStackTrace(); // This will show the error in your console
+            e.printStackTrace(); 
             throw new ServletException(e);
         }
     }

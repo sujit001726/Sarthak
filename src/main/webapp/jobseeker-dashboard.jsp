@@ -175,7 +175,7 @@
                                         <i class="fa-solid fa-grid-2 w-5"></i>
                                         <span>Dashboard</span>
                                     </a>
-                                    <a href="#"
+                                    <a href="${pageContext.request.contextPath}/job-market"
                                         class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
                                         <i class="fa-solid fa-compass w-5"></i>
                                         <span>Job Market</span>
@@ -192,17 +192,29 @@
 
                             <div class="mb-10">
                                 <p class="text-[0.6rem] font-black text-white/30 uppercase tracking-[0.2em] mb-6 px-4">
-                                    Personal</p>
+                                    Network</p>
                                 <nav>
-                                    <a href="#"
+                                    <a href="${pageContext.request.contextPath}/friends"
                                         class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
-                                        <i class="fa-solid fa-file-user w-5"></i>
-                                        <span>My Resume</span>
+                                        <i class="fa-solid fa-users w-5"></i>
+                                        <span>Friends</span>
                                     </a>
                                     <a href="#"
                                         class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
-                                        <i class="fa-solid fa-calendar-day w-5"></i>
-                                        <span>Schedule</span>
+                                        <i class="fa-solid fa-briefcase w-5"></i>
+                                        <span>Job Invitations</span>
+                                    </a>
+                                </nav>
+                            </div>
+
+                            <div class="mb-10">
+                                <p class="text-[0.6rem] font-black text-white/30 uppercase tracking-[0.2em] mb-6 px-4">
+                                    Personal</p>
+                                <nav>
+                                    <a href="${pageContext.request.contextPath}/profile"
+                                        class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
+                                        <i class="fa-solid fa-user w-5"></i>
+                                        <span>My Profile</span>
                                     </a>
                                     <a href="#"
                                         class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
@@ -230,17 +242,23 @@
 
                         <main class="p-6 lg:p-8 flex flex-col gap-6 w-full max-w-full">
 
+                        <c:if test="${not empty successMessage}">
+                            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-xl relative mb-4 animate-fadeIn" role="alert">
+                                <span class="block sm:inline font-bold">${successMessage}</span>
+                            </div>
+                        </c:if>
+
                         <!-- Fluid Quick Actions Bar -->
                         <div
                             class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm flex flex-wrap items-center justify-between gap-4">
                             <div class="flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white text-xl font-bold italic">
+                                <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white text-xl font-bold italic overflow-hidden">
                                     <c:choose>
-                                        <c:when test="${not empty userName}">
-                                            ${userName.substring(0,1).toUpperCase()}
+                                        <c:when test="${not empty profileImage}">
+                                            <img src="${profileImage}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                            <span style="display:none;">${userInitials}</span>
                                         </c:when>
-                                        <c:otherwise>S</c:otherwise>
+                                        <c:otherwise>${userInitials}</c:otherwise>
                                     </c:choose>
                                 </div>
                                 <div>
@@ -251,6 +269,10 @@
                                 </div>
                             </div>
                             <div class="flex items-center gap-2">
+                                <a href="${pageContext.request.contextPath}/friends"
+                                    class="bg-surface hover:bg-gray-100 px-4 py-2 rounded-lg text-[0.7rem] font-black text-primary transition-all flex items-center gap-2">
+                                    <i class="fa-solid fa-users-viewfinder"></i> Search Friends
+                                </a>
                                 <button
                                     class="bg-surface hover:bg-gray-100 px-4 py-2 rounded-lg text-[0.7rem] font-black text-primary transition-all">Search
                                     Jobs</button>

@@ -11,24 +11,20 @@ import java.sql.*;
  */
 public class UserDAO {
 
-    private static final String SQL_INSERT =
-            "INSERT INTO users (full_name, email, password_hash, role) VALUES (?, ?, ?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO users (full_name, email, password_hash, role) VALUES (?, ?, ?, ?)";
 
-    private static final String SQL_FIND_BY_EMAIL =
-            "SELECT id, full_name, email, password_hash, role, created_at FROM users WHERE email = ?";
+    private static final String SQL_FIND_BY_EMAIL = "SELECT id, full_name, email, password_hash, role, created_at FROM users WHERE email = ?";
 
-    private static final String SQL_EMAIL_EXISTS =
-            "SELECT COUNT(*) FROM users WHERE email = ?";
+    private static final String SQL_EMAIL_EXISTS = "SELECT COUNT(*) FROM users WHERE email = ?";
 
-    private static final String SQL_FIND_BY_ID =
-            "SELECT id, full_name, email, role, created_at FROM users WHERE id = ?";
+    private static final String SQL_FIND_BY_ID = "SELECT id, full_name, email, role, created_at FROM users WHERE id = ?";
 
     /**
      * Inserts a new user into the database.
      */
     public boolean createUser(User user) {
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(SQL_INSERT)) {
+                PreparedStatement ps = conn.prepareStatement(SQL_INSERT)) {
 
             ps.setString(1, user.getFullName());
             ps.setString(2, user.getEmail());
@@ -48,7 +44,7 @@ public class UserDAO {
      */
     public User getUserByEmail(String email) {
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_EMAIL)) {
+                PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_EMAIL)) {
 
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
@@ -68,7 +64,7 @@ public class UserDAO {
      */
     public boolean emailExists(String email) {
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(SQL_EMAIL_EXISTS)) {
+                PreparedStatement ps = conn.prepareStatement(SQL_EMAIL_EXISTS)) {
 
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
@@ -87,7 +83,7 @@ public class UserDAO {
      */
     public User getUserById(int id) {
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_ID)) {
+                PreparedStatement ps = conn.prepareStatement(SQL_FIND_BY_ID)) {
 
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -100,6 +96,38 @@ public class UserDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public java.util.List<Integer> getAllJobSeekerIds() {
+        java.util.List<Integer> ids = new java.util.ArrayList<>();
+        String sql = "SELECT id FROM users WHERE role = 'JOBSEEKER'";
+        try (Connection conn = DBConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                ids.add(rs.getInt("id"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ids;
+    }
+
+    public java.util.List<User> searchUsers(String query, int excludeUserId) {
+        java.util.List<User> users = new java.util.ArrayList<>();
+        String sql = "SELECT id, full_name, email, role, created_at FROM users WHERE full_name LIKE ? AND id != ? LIMIT 10";
+        try (Connection conn = DBConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, "%" + query + "%");
+            ps.setInt(2, excludeUserId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                users.add(mapRow(rs, false));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 
     private User mapRow(ResultSet rs, boolean includePassword) throws SQLException {

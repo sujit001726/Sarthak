@@ -7,14 +7,19 @@ public class User {
     private String userType;
     private String status;
 
+    private byte[] profileImage;
+    private byte[] coverImage;
+
     public User() {}
 
-    public User(int id, String fullName, String email, String userType, String status) {
+    public User(int id, String fullName, String email, String userType, String status, byte[] profileImage, byte[] coverImage) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.userType = userType;
         this.status = status;
+        this.profileImage = profileImage;
+        this.coverImage = coverImage;
     }
 
     public int getId() { return id; }
@@ -31,4 +36,10 @@ public class User {
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+
+    public byte[] getProfileImage() { return profileImage; }
+    public void setProfileImage(byte[] profileImage) { this.profileImage = profileImage; }
+
+    public byte[] getCoverImage() { return coverImage; }
+    public void setCoverImage(byte[] coverImage) { this.coverImage = coverImage; }
 }

@@ -18,6 +18,9 @@ public class User {
     private Role role;
     private LocalDateTime createdAt;
 
+    private byte[] profileImage;
+    private byte[] coverImage;
+
     // ── Constructors ──────────────────────────────────────────
     public User() {}
 
@@ -46,6 +49,12 @@ public class User {
 
     public LocalDateTime getCreatedAt()                   { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt)     { this.createdAt = createdAt; }
+
+    public byte[] getProfileImage() { return profileImage; }
+    public void setProfileImage(byte[] profileImage) { this.profileImage = profileImage; }
+
+    public byte[] getCoverImage() { return coverImage; }
+    public void setCoverImage(byte[] coverImage) { this.coverImage = coverImage; }
 
     @Override
     public String toString() {

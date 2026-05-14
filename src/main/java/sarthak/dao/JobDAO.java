@@ -13,7 +13,7 @@ public class JobDAO {
         List<Job> jobs = new ArrayList<>();
         String sql = "SELECT * FROM jobs WHERE employer_id = ? ORDER BY posted_at DESC";
         try (Connection conn = DbConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, employerId);
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
@@ -30,7 +30,7 @@ public class JobDAO {
     public Job getJobById(int jobId) {
         String sql = "SELECT * FROM jobs WHERE id = ?";
         try (Connection conn = DbConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, jobId);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -46,7 +46,7 @@ public class JobDAO {
     public boolean insertJob(Job job) {
         String sql = "INSERT INTO jobs (employer_id, title, description, location, salary_range, job_type, status, deadline) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DbConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, job.getEmployerId());
             stmt.setString(2, job.getTitle());
             stmt.setString(3, job.getDescription());
@@ -56,6 +56,12 @@ public class JobDAO {
             stmt.setString(7, job.getStatus());
             stmt.setDate(8, job.getDeadline());
             int rows = stmt.executeUpdate();
+            if (rows > 0) {
+                // Notify all job seekers
+                com.jobportal.dao.UserDAO userDAO = new com.jobportal.dao.UserDAO();
+                java.util.List<Integer> jobSeekerIds = userDAO.getAllJobSeekerIds();
+                NotificationDAO.sendToAll(jobSeekerIds, "New Job Opening!", "A new job was posted: " + job.getTitle(), "job_post", "/jobseeker-dashboard.jsp");
+            }
             return rows > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -65,7 +71,7 @@ public class JobDAO {
     public boolean updateJob(Job job) {
         String sql = "UPDATE jobs SET title = ?, description = ?, location = ?, salary_range = ?, job_type = ?, status = ?, deadline = ? WHERE id = ? AND employer_id = ?";
         try (Connection conn = DbConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, job.getTitle());
             stmt.setString(2, job.getDescription());
             stmt.setString(3, job.getLocation());
@@ -82,11 +88,10 @@ public class JobDAO {
         }
     }
 
-    
     public boolean deleteJob(int jobId, int employerId) {
         String sql = "DELETE FROM jobs WHERE id = ? AND employer_id = ?";
         try (Connection conn = DbConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, jobId);
             stmt.setInt(2, employerId);
             int rows = stmt.executeUpdate();
@@ -100,8 +105,8 @@ public class JobDAO {
         List<Job> jobs = new ArrayList<>();
         String sql = "SELECT * FROM jobs WHERE status = 'active' ORDER BY posted_at DESC";
         try (Connection conn = DbConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 Job job = mapResultSetToJob(rs);
                 jobs.add(job);
@@ -115,7 +120,7 @@ public class JobDAO {
     public int countJobsByEmployer(int employerId) {
         String sql = "SELECT COUNT(*) FROM jobs WHERE employer_id = ?";
         try (Connection conn = DbConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, employerId);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {

@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbConnection {
-    private static final String DEFAULT_URL = "jdbc:mysql://localhost:3306/sarthak";
+    private static final String DEFAULT_URL = "jdbc:mysql://localhost:3306/sarthak_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private static final String DEFAULT_USER = "root";
-    private static final String DEFAULT_PASSWORD = "1234";
+    private static final String DEFAULT_PASSWORD = "";
 
     static String URL = getConfig("DB_URL", DEFAULT_URL);
     static String USER = getConfig("DB_USER", DEFAULT_USER);

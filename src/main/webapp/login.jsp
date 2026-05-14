@@ -1,9 +1,19 @@
-﻿<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <%-- Redirect if already logged in --%>
 <c:if test="${not empty sessionScope.userId}">
-    <c:redirect url="/admin?action=dashboard"/>
+    <c:choose>
+        <c:when test="${sessionScope.userRole == 'admin'}">
+            <c:redirect url="/admin?action=dashboard"/>
+        </c:when>
+        <c:when test="${sessionScope.userRole == 'employer'}">
+            <c:redirect url="/employer/dashboard"/>
+        </c:when>
+        <c:otherwise>
+            <c:redirect url="/jobseeker/dashboard"/>
+        </c:otherwise>
+    </c:choose>
 </c:if>
 
 <!DOCTYPE html>

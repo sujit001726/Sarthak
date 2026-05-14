@@ -1,6 +1,6 @@
-package com.sarthak.sarthak.admin;
+package sarthak.controller;
 
-import com.sarthak.sarthak.util.DBConnection;
+import com.jobportal.util.DBConnection;
 import java.io.IOException;
 import java.sql.*;
 import java.util.*;
@@ -8,8 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
-// This file is superseded by com.sarthak.sarthak.job.controller.AdminServlet
-// @WebServlet("/admin")
+@WebServlet("/admin")
 public class AdminServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -152,9 +151,9 @@ public class AdminServlet extends HttpServlet {
             while (rs.next()) {
                 Map<String, String> u = new HashMap<>();
                 u.put("id", String.valueOf(rs.getInt("id")));
-                u.put("name", rs.getString("full_name") != null ? rs.getString("full_name") : "Anonymous");
+                u.put("fullName", rs.getString("full_name") != null ? rs.getString("full_name") : "Anonymous");
                 u.put("email", rs.getString("email") != null ? rs.getString("email") : "N/A");
-                u.put("type", rs.getString("user_type") != null ? rs.getString("user_type") : "recruiter");
+                u.put("userType", rs.getString("user_type") != null ? rs.getString("user_type") : "recruiter");
                 u.put("status", rs.getString("status") != null ? rs.getString("status") : "active");
                 users.add(u);
             }

@@ -26,6 +26,7 @@ public class ApplicantsServlet extends HttpServlet {
         int employerId = (int) session.getAttribute("userId");
         String jobIdParam = req.getParameter("jobId");
         
+        // Fetch specific job if jobId is provided (legacy behavior)
         if (jobIdParam != null && !jobIdParam.isEmpty()) {
             try {
                 int jobId = Integer.parseInt(jobIdParam);
@@ -37,6 +38,11 @@ public class ApplicantsServlet extends HttpServlet {
                 // Ignore or handle log
             }
         }
+
+        // Fetch applications from DB
+        sarthak.dao.ApplicationDAO appDAO = new sarthak.dao.ApplicationDAO();
+        java.util.List<sarthak.model.ApplicationDTO> applications = appDAO.getApplicationsForEmployer(employerId);
+        req.setAttribute("applications", applications);
 
         req.setAttribute("employerName", session.getAttribute("name"));
         req.getRequestDispatcher("/employer/manage-applicants.jsp").forward(req, resp);

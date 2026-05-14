@@ -50,26 +50,30 @@
             background: #F9FAFB;
         }
         .message-bubble {
-            max-width: 70%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            line-height: 1.4;
+            max-width: 75%;
+            padding: 10px 16px;
+            border-radius: 20px;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+            line-height: 1.5;
             position: relative;
+            word-wrap: break-word;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
         .message-sent {
             background: #1D3E35;
             color: white;
             align-self: flex-end;
             border-bottom-right-radius: 4px;
+            margin-left: auto;
         }
         .message-received {
             background: white;
             color: #1F2937;
             align-self: flex-start;
             border-bottom-left-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-right: auto;
+            border: 1px solid #f0f0f0;
         }
         .sidebar-item {
             transition: all 0.2s ease;
@@ -129,7 +133,7 @@
                             <a href="${pageContext.request.contextPath}/jobseeker/dashboard" class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
                                 <i class="fa-solid fa-grid-2 w-5"></i> <span>Dashboard</span>
                             </a>
-                            <a href="#" class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
+                            <a href="${pageContext.request.contextPath}/job-market" class="sidebar-item flex items-center gap-4 px-4 py-3 text-sm font-semibold">
                                 <i class="fa-solid fa-compass w-5"></i> <span>Job Market</span>
                             </a>
                         </c:otherwise>
@@ -166,10 +170,12 @@
                 </div>
                 <div class="flex-1 overflow-y-auto">
                     <c:forEach var="convo" items="${conversations}">
-                        <div onclick="window.location.href='${pageContext.request.contextPath}/messages?userId=${convo.senderId == userId ? convo.receiverId : convo.senderId}'" 
-                             class="convo-item p-4 flex items-center gap-4 border-b border-gray-50 ${activeChatId == (convo.senderId == userId ? convo.receiverId : convo.senderId) ? 'active' : ''}">
-                            <div class="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center text-primary font-black italic">
-                                ${convo.subject.substring(0,1)}
+                        <div onclick="window.location.href='${pageContext.request.contextPath}/messages?userId=${convo.senderId == sessionUserId ? convo.receiverId : convo.senderId}'" 
+                             class="convo-item p-4 flex items-center gap-4 border-b border-gray-50 ${activeChatId == (convo.senderId == sessionUserId ? convo.receiverId : convo.senderId) ? 'active' : ''}">
+                            <div class="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center shrink-0 overflow-hidden">
+                                <img src="${pageContext.request.contextPath}/image?userId=${convo.senderId == sessionUserId ? convo.receiverId : convo.senderId}&type=profile" 
+                                     onerror="this.src='https://ui-avatars.com/api/?name=${convo.subject}&background=1D3E35&color=fff&size=50'"
+                                     class="w-full h-full object-cover">
                             </div>
                             <div class="flex-1 min-w-0">
                                 <div class="flex justify-between items-center mb-1">
@@ -185,7 +191,7 @@
                                 </div>
                                 <p class="text-xs text-gray-500 truncate">${convo.body}</p>
                             </div>
-                            <c:if test="${!convo.read && convo.receiverId == userId}">
+                            <c:if test="${!convo.read && convo.receiverId == sessionUserId}">
                                 <div class="w-2 h-2 bg-accent rounded-full"></div>
                             </c:if>
                         </div>
@@ -203,11 +209,13 @@
                         <!-- Chat Header -->
                         <div class="p-4 bg-white border-b border-gray-100 flex items-center justify-between shadow-sm">
                             <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center text-accent font-black">
-                                    <i class="fa-solid fa-user"></i>
+                                <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center overflow-hidden shrink-0">
+                                    <img src="${pageContext.request.contextPath}/image?userId=${activeChatId}&type=profile" 
+                                         onerror="this.src='https://ui-avatars.com/api/?name=${activeChatName}&background=22c55e&color=fff&size=40'"
+                                         class="w-full h-full object-cover">
                                 </div>
                                 <div>
-                                    <h3 class="text-sm font-black text-dark uppercase tracking-tight">Active Conversation</h3>
+                                    <h3 class="text-sm font-black text-dark uppercase tracking-tight">${not empty activeChatName ? activeChatName : 'Active Conversation'}</h3>
                                     <span class="text-[0.6rem] font-bold text-accent uppercase flex items-center gap-1">
                                         <span class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></span> Online
                                     </span>
@@ -222,9 +230,9 @@
                         <!-- Messages Display -->
                         <div id="messages-container">
                             <c:forEach var="msg" items="${chatHistory}">
-                                <div class="message-bubble ${msg.senderId == userId ? 'message-sent' : 'message-received'}">
+                                <div class="message-bubble ${msg.senderId eq sessionUserId ? 'message-sent' : 'message-received'}">
                                     ${msg.body}
-                                    <div class="text-[0.55rem] mt-1 opacity-50 text-right">Just now</div>
+                                    <div class="text-[0.5rem] mt-1 opacity-50 text-right">Just now</div>
                                 </div>
                             </c:forEach>
                         </div>
@@ -256,7 +264,7 @@
     </div>
 
     <script>
-        const userId = ${userId};
+        const userId = ${sessionUserId};
         const activeChatId = ${activeChatId != null ? activeChatId : 'null'};
         let socket;
 
@@ -290,11 +298,12 @@
 
         function displayMessage(senderId, body) {
             const container = document.getElementById('messages-container');
-            const isSent = senderId === userId;
+            // Use loose equality to handle string vs number comparisons safely
+            const isSent = senderId == userId;
             
             const messageDiv = document.createElement('div');
             messageDiv.className = `message-bubble ${isSent ? 'message-sent' : 'message-received'}`;
-            messageDiv.innerHTML = body + `<div class="text-[0.55rem] mt-1 opacity-50 text-right">Just now</div>`;
+            messageDiv.innerHTML = body + `<div class="text-[0.5rem] mt-1 opacity-50 text-right">Just now</div>`;
             
             container.appendChild(messageDiv);
             container.scrollTop = container.scrollHeight;

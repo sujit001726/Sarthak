@@ -10,46 +10,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0bb4b2da-a363-4881-abc2-1331ea1179ba" name="Changes" comment="git commit -m &quot;added my work &quot;">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/sarthak_job_portal_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/sarthak_job_portal_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/bef8db10-bd36-46bc-b8ae-01da8dc7083d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bef8db10-bd36-46bc-b8ae-01da8dc7083d.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apache-maven-3.9.9-bin.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/smoke.cookies.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SETUP_CHECKLIST.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SETUP_DATABASE.sql" beforeDir="false" afterPath="$PROJECT_DIR$/SETUP_DATABASE.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.err.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jobportal/controller/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobportal/controller/LoginServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jobportal/controller/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobportal/controller/LogoutServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jobportal/controller/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobportal/controller/RegisterServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobportal/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobportal/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobportal/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobportal/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobportal/util/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobportal/util/DBConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jobportal/util/PasswordUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobportal/util/PasswordUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sarthak/jobseeker/controller/DashboardServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sarthak/jobseeker/controller/DashboardServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/filter/AuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/user/controller/auth/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/user/controller/auth/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/user/controller/auth/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/user/controller/auth/RegisterServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/admin/AdminServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/job/controller/AdminServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/job/controller/AdminServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/user/dao/impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/user/dao/impl/UserDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/user/dao/interfaces/UserDAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/user/dao/interfaces/UserDAOInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/user/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/user/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/util/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sarthak/sarthak/util/DBConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sarthak/controller/ApplicantsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sarthak/controller/ApplicantsServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sarthak/controller/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sarthak/controller/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sarthak/controller/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sarthak/controller/LogoutServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sarthak/controller/EmployerDashboardServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sarthak/controller/EmployerDashboardServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sarthak/controller/LoginServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sarthak/controller/LogoutServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sarthak/controller/MessageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sarthak/controller/MessageServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sarthak/dao/JobDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sarthak/dao/JobDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sarthak/dao/MessageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sarthak/dao/MessageDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sarthak/dao/NotificationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sarthak/dao/NotificationDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sarthak/model/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sarthak/model/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sarthak/utils/DbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sarthak/utils/DbConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/employer/employer-dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/employer/employer-dashboard.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/employer/manage-applicants.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/employer/manage-applicants.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/employer/manage-jobs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/employer/manage-jobs.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/error/500.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/error/500.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/includes/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/includes/footer.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/includes/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/includes/header.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jobseeker-dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jobseeker-dashboard.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/messages.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/messages.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/dashboard.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/form/job-posting.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/form/job-posting.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/includes/sidebar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/includes/sidebar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/jobs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/jobs.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/controller/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/controller/LoginServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/controller/LogoutServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/controller/LogoutServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/controller/RegisterServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/controller/RegisterServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/dao/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/model/User$Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/model/User$Role.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/util/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/util/DBConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/util/PasswordUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/util/PasswordUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/sarthak-job-portal/META-INF/MANIFEST.MF" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +67,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="232" />
+    <option name="cachedIndexableFilesCount" value="259" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -109,7 +119,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Aakriti Nepal/OneDrive/Desktop/Job Portal&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/shahs/Downloads/Sarthak&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -197,6 +207,11 @@
       <script-file value="$PROJECT_DIR$/src/main/Database.sql" />
       <script-mode>FILE</script-mode>
       <data-source id="bef8db10-bd36-46bc-b8ae-01da8dc7083d" namespace="schema/&quot;sarthak_db&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="UPDATE_PROFILE_SCHEMA.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/UPDATE_PROFILE_SCHEMA.sql" />
+      <script-mode>FILE</script-mode>
       <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
@@ -298,11 +313,13 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Database Script.UPDATE_PROFILE_SCHEMA.sql" />
       <item itemvalue="Database Script.Database.sql" />
       <item itemvalue="Tomcat Server.Tomcat 11.0.18" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Database Script.UPDATE_PROFILE_SCHEMA.sql" />
         <item itemvalue="Database Script.Database.sql" />
       </list>
     </recent_temporary>
@@ -344,6 +361,12 @@
       <workItem from="1777884823376" duration="4051000" />
       <workItem from="1778051127302" duration="225000" />
       <workItem from="1778074850342" duration="4280000" />
+      <workItem from="1778222507866" duration="6948000" />
+      <workItem from="1778427415394" duration="13452000" />
+      <workItem from="1778510661600" duration="6088000" />
+      <workItem from="1778689655034" duration="8848000" />
+      <workItem from="1778700969663" duration="4384000" />
+      <workItem from="1778736684035" duration="5016000" />
     </task>
     <task id="LOCAL-00001" summary="git commit -m &quot;added my work &quot;">
       <option name="closed" value="true" />

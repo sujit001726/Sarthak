@@ -49,11 +49,21 @@ public class DashboardServlet extends HttpServlet {
         request.setAttribute("userInitials", initials.toUpperCase());
         request.setAttribute("userName", userName);
         
+        int userId = (int) session.getAttribute("userId");
+        String profileImageUrl = request.getContextPath() + "/image?userId=" + userId + "&type=profile";
+        request.setAttribute("profileImage", profileImageUrl);
+        
         // Mock data for dashboard
         request.setAttribute("totalApplications", 0);
         request.setAttribute("savedJobs", 0);
         request.setAttribute("upcomingInterviews", 0);
         request.setAttribute("profileViews", 0);
+        
+        // Flash message support
+        if (session.getAttribute("flash") != null) {
+            request.setAttribute("successMessage", session.getAttribute("flash"));
+            session.removeAttribute("flash");
+        }
         
         // Forward to the JSP page
         request.getRequestDispatcher("/jobseeker-dashboard.jsp").forward(request, response);
