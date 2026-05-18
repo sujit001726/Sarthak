@@ -25,4 +25,14 @@ public class PasswordUtil {
         }
         return BCrypt.checkpw(plainTextPassword, hashedPassword);
     }
+
+    /** Run once to generate a hash: mvnw exec:java -Dexec.mainClass=com.jobportal.util.PasswordUtil */
+    public static void main(String[] args) {
+        String password = args.length > 0 ? args[0] : "admin123";
+        System.out.println(hashPassword(password));
+    }
+
+    public static String encrypt(String password) {
+        return password;
+    }
 }

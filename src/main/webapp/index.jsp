@@ -24,12 +24,6 @@
                 }
             }
         }
-        function selectCategory(card) {
-            document.querySelectorAll('.category-card').forEach(function(c) {
-                c.classList.remove('active');
-            });
-            card.classList.add('active');
-        }
     </script>
     <style>
         .category-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
@@ -64,10 +58,10 @@
     </style>
 </head>
 <body class="text-[#1a1a1a] relative min-h-screen">
-    <!-- Page Background Layer -->
-    <div class="fixed inset-0 z-[-1] bg-[#f0f7f4]/60"></div>
+<!-- Page Background Layer -->
+<div class="fixed inset-0 z-[-1] bg-[#f0f7f4]/60"></div>
 
-    <div class="flex flex-col min-h-screen relative z-10">
+<div class="flex flex-col min-h-screen relative z-10">
 
     <%@ include file="/includes/header.jsp" %>
 
@@ -79,7 +73,7 @@
             <div class="absolute inset-0 z-0 opacity-60" style="background-image: url('${pageContext.request.contextPath}/images/hero-job-portal.png'); background-size: cover; background-position: center;"></div>
             <!-- Dynamic Emerald Gradient Overlay -->
             <div class="absolute inset-0 z-0 bg-gradient-to-b from-primary/90 via-primary/30 to-primary/95"></div>
-            
+
             <div class="max-w-[1280px] mx-auto text-center relative z-10">
                 <h1 class="text-[2.5rem] lg:text-[3.8rem] font-black leading-[1.1] text-white mb-6 tracking-tight">
                     Get The <span class="text-[#4ade80] drop-shadow-[0_5px_15px_rgba(74,222,128,0.3)]">Right Job</span><br>
@@ -90,20 +84,21 @@
                 </p>
 
                 <!-- Floating Search Bar -->
-                <div class="max-w-[650px] mx-auto bg-white rounded-2xl shadow-[0_15px_50px_rgba(29,62,53,0.06)] p-1 flex flex-col md:flex-row gap-1 border border-gray-50">
+                <form action="${pageContext.request.contextPath}/job-market" method="GET" class="max-w-[650px] mx-auto bg-white rounded-2xl shadow-[0_15px_50px_rgba(29,62,53,0.06)] p-1 flex flex-col md:flex-row gap-1 border border-gray-50">
                     <div class="flex items-center gap-2.5 flex-1 px-3 py-2.5">
                         <svg class="text-gray-300" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                        <input type="text" placeholder="Job title or keyword" class="w-full text-[0.88rem] font-medium outline-none placeholder:text-gray-300">
+                        <input type="text" name="q" placeholder="Job title or keyword" class="w-full text-[0.88rem] font-medium outline-none placeholder:text-gray-300">
                     </div>
                     <div class="hidden md:block w-px bg-gray-100 self-stretch my-2"></div>
                     <div class="flex items-center gap-2.5 flex-1 px-3 py-2.5">
                         <svg class="text-gray-300" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <input type="text" placeholder="Kathmandu, Nepal" class="w-full text-[0.88rem] font-medium outline-none placeholder:text-gray-300">
+                        <input type="text" placeholder="Location (optional)" class="w-full text-[0.88rem] font-medium outline-none placeholder:text-gray-300">
                     </div>
-                    <button class="bg-primary hover:bg-secondary text-white font-bold px-6 md:px-8 py-2.5 rounded-xl text-[0.88rem] transition-all duration-300 shadow-lg shadow-primary/20">
+                    <button type="submit" class="bg-primary hover:bg-secondary text-white font-bold px-6 md:px-8 py-2.5 rounded-xl text-[0.88rem] transition-all duration-300 shadow-lg shadow-primary/20">
                         Search
                     </button>
-                </div>
+                </form>
+
             </div>
         </section>
 
@@ -284,7 +279,7 @@
             <!-- Background Image with Light Greenish Tint -->
             <div class="absolute inset-0 z-0 opacity-5" style="background-image: url('${pageContext.request.contextPath}/images/hero-bg.png'); background-size: cover; background-position: center;"></div>
             <div class="absolute inset-0 z-0 bg-[#fcfdfd]/90"></div>
-            
+
             <div class="max-w-[1280px] mx-auto px-8 lg:px-16 text-center relative z-10">
                 <h2 class="text-[2.2rem] lg:text-[2.8rem] font-black text-[#0f1a17] mb-14">
                     Featured <span class="text-secondary">Job Circulars</span>
@@ -483,13 +478,16 @@
 
     <%@ include file="/includes/footer.jsp" %>
 </div>
-    <script>
-        function selectCategory(card) {
-            document.querySelectorAll('.category-card').forEach(function(c) {
-                c.classList.remove('active');
-            });
-            card.classList.add('active');
-        }
-    </script>
+<script>
+    function selectCategory(card) {
+        document.querySelectorAll('.category-card').forEach(function(c) {
+            c.classList.remove('active');
+        });
+        card.classList.add('active');
+        var categoryName = card.querySelector('h3').innerText.replace(/\n/g, ' ');
+        window.location.href = "${pageContext.request.contextPath}/job-market?q=" + encodeURIComponent(categoryName);
+    }
+
+</script>
 </body>
 </html>

@@ -38,6 +38,19 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
+        // Hardcoded Admin Check
+        if ("admin@gmail.com".equals(email) && "admin123".equals(password)) {
+            HttpSession session = req.getSession(true);
+            session.setAttribute("userId", 999);
+            session.setAttribute("userName", "Admin");
+            session.setAttribute("userRole", "admin");
+            session.setAttribute("role", "admin");
+            session.setAttribute("admin", "Admin");
+            session.setMaxInactiveInterval(7 * 24 * 60 * 60);
+            resp.sendRedirect(req.getContextPath() + "/admin?action=dashboard");
+            return;
+        }
+
         User user = userDAO.getUserByEmail(email);
 
         if (user == null || !PasswordUtil.verifyPassword(password, user.getPasswordHash())) {
@@ -51,6 +64,7 @@ public class LoginServlet extends HttpServlet {
         session.setAttribute("userId",   user.getId());
         session.setAttribute("userName", user.getFullName());
         session.setAttribute("userRole", user.getRole().name());
+        session.setAttribute("role", user.getRole().name());
         session.setMaxInactiveInterval(30 * 60);
 
         req.setAttribute("successMessage", "Login Successful");

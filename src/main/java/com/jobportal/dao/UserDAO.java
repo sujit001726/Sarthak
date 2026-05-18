@@ -12,10 +12,10 @@ import java.sql.*;
 public class UserDAO {
 
     private static final String SQL_INSERT =
-            "INSERT INTO users (full_name, email, password_hash, role) VALUES (?, ?, ?, ?)";
+            "INSERT INTO users (full_name, email, password, role) VALUES (?, ?, ?, ?)";
 
     private static final String SQL_FIND_BY_EMAIL =
-            "SELECT id, full_name, email, password_hash, role, created_at FROM users WHERE email = ?";
+            "SELECT id, full_name, email, password, role, created_at FROM users WHERE email = ?";
 
     private static final String SQL_EMAIL_EXISTS =
             "SELECT COUNT(*) FROM users WHERE email = ?";
@@ -26,20 +26,16 @@ public class UserDAO {
     /**
      * Inserts a new user into the database.
      */
-    public boolean createUser(User user) {
+    public boolean createUser(User user) throws SQLException {
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(SQL_INSERT)) {
 
             ps.setString(1, user.getFullName());
             ps.setString(2, user.getEmail());
-            ps.setString(3, user.getPasswordHash());
+            ps.setString(3, user.getPassword());
             ps.setString(4, user.getRole().name());
 
             return ps.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
         }
     }
 
@@ -107,10 +103,17 @@ public class UserDAO {
         user.setId(rs.getInt("id"));
         user.setFullName(rs.getString("full_name"));
         user.setEmail(rs.getString("email"));
-        user.setRole(User.Role.valueOf(rs.getString("role")));
+        String roleStr = rs.getString("role");
+        if (roleStr != null) {
+            try {
+                user.setRole(User.Role.valueOf(roleStr.toLowerCase()));
+            } catch (IllegalArgumentException e) {
+                user.setRole(User.Role.job_seeker); // Default fallback
+            }
+        }
 
         if (includePassword) {
-            user.setPasswordHash(rs.getString("password_hash"));
+            user.setPassword(rs.getString("password"));
         }
 
         Timestamp ts = rs.getTimestamp("created_at");

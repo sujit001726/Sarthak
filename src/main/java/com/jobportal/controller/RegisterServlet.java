@@ -36,8 +36,19 @@ public class RegisterServlet extends HttpServlet {
         String confirmPassword = req.getParameter("confirmPassword") != null ? req.getParameter("confirmPassword")                : "";
         String roleParam       = req.getParameter("role")            != null ? req.getParameter("role")                          : "job_seeker";
 
-        if (fullName.isEmpty() || email.isEmpty() || password.isEmpty() || !password.equals(confirmPassword) || password.length() < 6 || !email.matches("^[\\w.+-]+@[\\w-]+\\.[\\w.]+$") || userDAO.emailExists(email)) {
-            req.setAttribute("error", "Registration Failed");
+        if (fullName.isEmpty()) {
+            req.setAttribute("error", "Full Name is required");
+        } else if (email.isEmpty() || !email.matches("^[\\w.+-]+@[\\w-]+\\.[\\w.]+$")) {
+            req.setAttribute("error", "Valid Email is required");
+        } else if (password.length() < 6) {
+            req.setAttribute("error", "Password must be at least 6 characters long");
+        } else if (!password.equals(confirmPassword)) {
+            req.setAttribute("error", "Passwords do not match");
+        } else if (userDAO.emailExists(email)) {
+            req.setAttribute("error", "Email is already registered");
+        }
+
+        if (req.getAttribute("error") != null) {
             req.getRequestDispatcher("/register.jsp").forward(req, resp);
             return;
         }
@@ -49,7 +60,7 @@ public class RegisterServlet extends HttpServlet {
             role = User.Role.job_seeker;
         }
 
-        String passwordHash = PasswordUtil.hashPassword(password);
+        String passwordHash = PasswordUtil.encrypt(password);
         User newUser = new User(fullName, email, passwordHash, role);
 
         String targetJsp = "/register.jsp";
@@ -61,8 +72,10 @@ public class RegisterServlet extends HttpServlet {
             if (created) {
                 req.setAttribute("successMessage", "Registration Successful");
             } else {
-                req.setAttribute("error", "Registration Failed");
+                req.setAttribute("error", "Registration Failed: Database error");
             }
+        } catch (SQLException e) {
+            req.setAttribute("error", "Database Error: " + e.getMessage());
         } catch (Exception e) {
             req.setAttribute("error", "Error: " + e.getMessage());
         }

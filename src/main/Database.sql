@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS users (
                                      id INT AUTO_INCREMENT PRIMARY KEY,
                                      full_name VARCHAR(150) NOT NULL,
                                      email VARCHAR(255) NOT NULL UNIQUE,
-                                     password_hash VARCHAR(255) NOT NULL,
+                                     password VARCHAR(255) NOT NULL,
                                      role ENUM('job_seeker', 'employer') NOT NULL DEFAULT 'job_seeker',
                                      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                                      INDEX idx_email (email)
@@ -26,11 +26,11 @@ CREATE TABLE IF NOT EXISTS users (
 -- ============================================================
 
 -- Register User
--- INSERT INTO users (full_name, email, password_hash, role)
+-- INSERT INTO users (full_name, email, password, role)
 -- VALUES (?, ?, ?, ?);
 
 -- Login User
--- SELECT id, full_name, email, password_hash, role, created_at
+-- SELECT id, full_name, email, password, role, created_at
 -- FROM users
 -- WHERE email = ?;
 

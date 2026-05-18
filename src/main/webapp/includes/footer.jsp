@@ -1,4 +1,4 @@
-<footer class="bg-primary py-8 text-white relative overflow-hidden">
+<footer class="bg-primary pt-8 pb-12 text-white relative overflow-hidden">
     <!-- Subtle decorative blur -->
     <div class="absolute top-0 right-0 w-[160px] h-[160px] bg-secondary/10 rounded-full blur-[70px] -mr-16 -mt-16 pointer-events-none"></div>
 
