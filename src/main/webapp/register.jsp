@@ -127,3 +127,5 @@
 </html>
 
 <!-- commit iteration 3: Add register page skeleton -->
+
+<!-- commit iteration 8: Update stylesheet for register page styling -->
