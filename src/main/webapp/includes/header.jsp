@@ -58,7 +58,7 @@
                                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
                                         <span id="avatar-initial" class="nav-avatar-initial"></span>
                                     </div>
-                                    <span class="text-[0.9rem] font-bold text-[#1a1a1a]">Me â–¾</span>
+                                    <span class="text-[0.9rem] font-bold text-[#1a1a1a]">Me Ã¢â€“Â¾</span>
                                     <div
                                         class="hidden group-hover:block absolute top-full right-0 bg-white border border-gray-100 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] min-w-[220px] z-[200] overflow-hidden mt-1 animate-fadeIn">
                                         <div class="p-5 border-b border-gray-50 bg-gray-50/50">
@@ -352,3 +352,4 @@
                 });
             })();
         </script>
+ 
