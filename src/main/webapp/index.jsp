@@ -58,10 +58,10 @@
     </style>
 </head>
 <body class="text-[#1a1a1a] relative min-h-screen">
-<!-- Page Background Layer -->
-<div class="fixed inset-0 z-[-1] bg-[#f0f7f4]/60"></div>
+    <!-- Page Background Layer -->
+    <div class="fixed inset-0 z-[-1] bg-[#f0f7f4]/60"></div>
 
-<div class="flex flex-col min-h-screen relative z-10">
+    <div class="flex flex-col min-h-screen relative z-10">
 
     <%@ include file="/includes/header.jsp" %>
 
@@ -73,7 +73,7 @@
             <div class="absolute inset-0 z-0 opacity-60" style="background-image: url('${pageContext.request.contextPath}/images/hero-job-portal.png'); background-size: cover; background-position: center;"></div>
             <!-- Dynamic Emerald Gradient Overlay -->
             <div class="absolute inset-0 z-0 bg-gradient-to-b from-primary/90 via-primary/30 to-primary/95"></div>
-
+            
             <div class="max-w-[1280px] mx-auto text-center relative z-10">
                 <h1 class="text-[2.5rem] lg:text-[3.8rem] font-black leading-[1.1] text-white mb-6 tracking-tight">
                     Get The <span class="text-[#4ade80] drop-shadow-[0_5px_15px_rgba(74,222,128,0.3)]">Right Job</span><br>
@@ -279,7 +279,7 @@
             <!-- Background Image with Light Greenish Tint -->
             <div class="absolute inset-0 z-0 opacity-5" style="background-image: url('${pageContext.request.contextPath}/images/hero-bg.png'); background-size: cover; background-position: center;"></div>
             <div class="absolute inset-0 z-0 bg-[#fcfdfd]/90"></div>
-
+            
             <div class="max-w-[1280px] mx-auto px-8 lg:px-16 text-center relative z-10">
                 <h2 class="text-[2.2rem] lg:text-[2.8rem] font-black text-[#0f1a17] mb-14">
                     Featured <span class="text-secondary">Job Circulars</span>
@@ -478,16 +478,16 @@
 
     <%@ include file="/includes/footer.jsp" %>
 </div>
-<script>
-    function selectCategory(card) {
-        document.querySelectorAll('.category-card').forEach(function(c) {
-            c.classList.remove('active');
-        });
-        card.classList.add('active');
-        var categoryName = card.querySelector('h3').innerText.replace(/\n/g, ' ');
-        window.location.href = "${pageContext.request.contextPath}/job-market?q=" + encodeURIComponent(categoryName);
-    }
+    <script>
+        function selectCategory(card) {
+            document.querySelectorAll('.category-card').forEach(function(c) {
+                c.classList.remove('active');
+            });
+            card.classList.add('active');
+            var categoryName = card.querySelector('h3').innerText.replace(/\n/g, ' ');
+            window.location.href = "${pageContext.request.contextPath}/job-market?q=" + encodeURIComponent(categoryName);
+        }
 
-</script>
+    </script>
 </body>
 </html>
