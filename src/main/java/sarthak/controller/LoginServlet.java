@@ -45,4 +45,4 @@ public class LoginServlet extends HttpServlet {
         req.setAttribute("successMessage", "Login Successful");
         req.getRequestDispatcher("/login.jsp").forward(req, resp);
     }
-}
+} 
