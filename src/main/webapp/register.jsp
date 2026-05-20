@@ -133,3 +133,5 @@
 <!-- commit iteration 13: Update LoginServlet authentication logic -->
 
 <!-- commit iteration 18: Implement notification dropdown structure -->
+
+<!-- commit iteration 23: Update error pages redirections -->
