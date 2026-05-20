@@ -499,3 +499,5 @@
 <!-- commit iteration 11: Implement register-seeker JSP template -->
 
 <!-- commit iteration 16: Style buttons on home page -->
+
+<!-- commit iteration 21: Fix registration validation messages -->
