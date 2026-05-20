@@ -1,0 +1,15 @@
+target/
+.idea/
+.vscode/
+*.class
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+log/
+temp/
+bin/
+out/
+.DS_Store
+Thumbs.db
