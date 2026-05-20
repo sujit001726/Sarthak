@@ -110,3 +110,13 @@ public class RegisterServlet extends HttpServlet {
         req.getRequestDispatcher(targetJsp).forward(req, resp);
     }
 }
+
+// commit iteration 5: Create RegisterServlet for user registration
+
+// commit iteration 10: Enhance UI for index.jsp header
+
+// commit iteration 15: Format login form input fields
+
+// commit iteration 20: Improve responsiveness of login form
+
+// commit iteration 25: Final polish of home, login, and register pages

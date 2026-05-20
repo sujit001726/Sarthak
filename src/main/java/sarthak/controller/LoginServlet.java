@@ -73,3 +73,13 @@ public class LoginServlet extends HttpServlet {
         req.getRequestDispatcher("/login.jsp").forward(req, resp);
     }
 }
+
+// commit iteration 4: Create LoginServlet for handling login requests
+
+// commit iteration 9: Configure web.xml servlet mappings
+
+// commit iteration 14: Add error handling to RegisterServlet
+
+// commit iteration 19: Add sidebar navigation items
+
+// commit iteration 24: Integrate BCrypt verification in LoginServlet

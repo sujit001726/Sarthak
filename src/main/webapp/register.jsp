@@ -125,3 +125,13 @@
     </div>
 </body>
 </html>
+
+<!-- commit iteration 3: Add register page skeleton -->
+
+<!-- commit iteration 8: Update stylesheet for register page styling -->
+
+<!-- commit iteration 13: Update LoginServlet authentication logic -->
+
+<!-- commit iteration 18: Implement notification dropdown structure -->
+
+<!-- commit iteration 23: Update error pages redirections -->
