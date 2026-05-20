@@ -131,3 +131,5 @@
 </html>
 
 <!-- commit iteration 2: Add login form UI structure -->
+
+<!-- commit iteration 7: Add PasswordUtil with BCrypt hashing -->
