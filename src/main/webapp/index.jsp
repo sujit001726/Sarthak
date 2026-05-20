@@ -497,3 +497,5 @@
 <!-- commit iteration 6: Implement AuthFilter for page protection -->
 
 <!-- commit iteration 11: Implement register-seeker JSP template -->
+
+<!-- commit iteration 16: Style buttons on home page -->
