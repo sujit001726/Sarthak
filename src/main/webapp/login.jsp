@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
+<%-- Sarthak Job Portal Login: Authenticates existing users and handles redirect logic --%>
 <%-- Redirect if already logged in --%>
 <c:if test="${not empty sessionScope.userId}">
     <c:choose>
