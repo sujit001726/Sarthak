@@ -75,3 +75,5 @@ public class LoginServlet extends HttpServlet {
 }
 
 // commit iteration 4: Create LoginServlet for handling login requests
+
+// commit iteration 9: Configure web.xml servlet mappings
