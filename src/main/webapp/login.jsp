@@ -109,7 +109,7 @@
                         <label for="password" class="block text-xs font-bold text-[#333] mb-1.5 uppercase tracking-wider">Password</label>
                         <input type="password" id="password" name="password"
                                class="w-full px-4 py-3.5 border border-gray-200 rounded-xl text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-300"
-                               placeholder="••••••••" required>
+                               placeholder="ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢" required>
                     </div>
 
                     <button type="submit"
@@ -129,13 +129,4 @@
     </div>
 </body>
 </html>
-
-<!-- commit iteration 2: Add login form UI structure -->
-
-<!-- commit iteration 7: Add PasswordUtil with BCrypt hashing -->
-
-<!-- commit iteration 12: Implement register-employer JSP template -->
-
-<!-- commit iteration 17: Add navbar styling to header.jsp -->
-
-<!-- commit iteration 22: Optimize session management in LogoutServlet -->
+  

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Job Portal — Find the right job you deserve.">
+    <meta name="description" content="Job Portal ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Find the right job you deserve.">
     <title>Nepal's Job Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -491,13 +491,4 @@
     </script>
 </body>
 </html>
-
-<!-- commit iteration 1: Set up basic layout for index page -->
-
-<!-- commit iteration 6: Implement AuthFilter for page protection -->
-
-<!-- commit iteration 11: Implement register-seeker JSP template -->
-
-<!-- commit iteration 16: Style buttons on home page -->
-
-<!-- commit iteration 21: Fix registration validation messages -->
+  

@@ -1,4 +1,4 @@
-package sarthak.utils;
+﻿package sarthak.utils;
 
 import org.mindrot.jbcrypt.BCrypt;
 

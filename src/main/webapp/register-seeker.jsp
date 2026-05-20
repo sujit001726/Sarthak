@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Join Sarthak as a Job Seeker. Find your dream career in Nepal.">
-    <title>Seeker Registration — Sarthak</title>
+    <title>Seeker Registration â€” Sarthak</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
