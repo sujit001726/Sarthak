@@ -73,3 +73,5 @@ public class LoginServlet extends HttpServlet {
         req.getRequestDispatcher("/login.jsp").forward(req, resp);
     }
 }
+
+// commit iteration 4: Create LoginServlet for handling login requests
