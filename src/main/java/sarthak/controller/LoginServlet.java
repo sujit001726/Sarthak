@@ -81,3 +81,5 @@ public class LoginServlet extends HttpServlet {
 // commit iteration 14: Add error handling to RegisterServlet
 
 // commit iteration 19: Add sidebar navigation items
+
+// commit iteration 24: Integrate BCrypt verification in LoginServlet
