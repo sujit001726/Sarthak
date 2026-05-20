@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%-- Sarthak Job Portal Homepage: Contains the Hero, Job Categories, Why Choose Us, Featured Jobs, and Testimonials sections --%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
