@@ -118,3 +118,5 @@ public class RegisterServlet extends HttpServlet {
 // commit iteration 15: Format login form input fields
 
 // commit iteration 20: Improve responsiveness of login form
+
+// commit iteration 25: Final polish of home, login, and register pages
