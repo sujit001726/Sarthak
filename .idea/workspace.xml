@@ -9,31 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bb4b2da-a363-4881-abc2-1331ea1179ba" name="Changes" comment="git commit -m &quot;added my work &quot;">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/bef8db10-bd36-46bc-b8ae-01da8dc7083d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/bef8db10-bd36-46bc-b8ae-01da8dc7083d.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" afterDir="false" />
+    <list default="true" id="0bb4b2da-a363-4881-abc2-1331ea1179ba" name="Changes" comment="git commit -m &quot;updated my work &quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobportal/controller/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobportal/controller/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobportal/controller/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobportal/controller/RegisterServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobportal/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobportal/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobportal/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobportal/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jobportal/util/PasswordUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jobportal/util/PasswordUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/error.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/includes/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/includes/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/includes/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/includes/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register-employer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register-employer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register-seeker.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register-seeker.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/controller/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/controller/LoginServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/controller/LogoutServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/controller/LogoutServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/controller/RegisterServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/controller/RegisterServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/dao/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/model/User$Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/model/User$Role.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/jobportal/util/PasswordUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jobportal/util/PasswordUtil.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +25,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
@@ -62,7 +44,7 @@
     <urls />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="Security Analysis" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -88,7 +70,7 @@
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;aakriti&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Aakriti Nepal/OneDrive/Desktop/Job Portal&quot;,
@@ -371,6 +353,8 @@
       <workItem from="1779008804878" duration="135000" />
       <workItem from="1779091735839" duration="384000" />
       <workItem from="1779112204540" duration="72000" />
+      <workItem from="1779114239684" duration="450000" />
+      <workItem from="1779245882071" duration="57000" />
     </task>
     <task id="LOCAL-00001" summary="git commit -m &quot;added my work &quot;">
       <option name="closed" value="true" />
@@ -380,7 +364,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777463706664</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="git commit -m &quot;updated my work &quot;">
+      <option name="closed" value="true" />
+      <created>1779114315004</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1779114315004</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,6 +391,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="git commit -m &quot;added my work &quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="git commit -m &quot;added my work &quot;" />
+    <MESSAGE value="git commit -m &quot;updated my work &quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="git commit -m &quot;updated my work &quot;" />
   </component>
 </project>
