@@ -114,3 +114,5 @@ public class RegisterServlet extends HttpServlet {
 // commit iteration 5: Create RegisterServlet for user registration
 
 // commit iteration 10: Enhance UI for index.jsp header
+
+// commit iteration 15: Format login form input fields
