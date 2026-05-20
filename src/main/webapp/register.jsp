@@ -125,3 +125,5 @@
     </div>
 </body>
 </html>
+
+<!-- commit iteration 3: Add register page skeleton -->
