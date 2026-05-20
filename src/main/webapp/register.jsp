@@ -131,3 +131,5 @@
 <!-- commit iteration 8: Update stylesheet for register page styling -->
 
 <!-- commit iteration 13: Update LoginServlet authentication logic -->
+
+<!-- commit iteration 18: Implement notification dropdown structure -->
