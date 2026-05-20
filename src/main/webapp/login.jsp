@@ -133,3 +133,5 @@
 <!-- commit iteration 2: Add login form UI structure -->
 
 <!-- commit iteration 7: Add PasswordUtil with BCrypt hashing -->
+
+<!-- commit iteration 12: Implement register-employer JSP template -->
