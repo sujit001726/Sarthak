@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
+<%-- Sarthak Job Portal Registration Selection Page: Provides options to register as either a Job Seeker or an Employer --%>
 <%-- Redirect if already logged in --%>
 <c:if test="${not empty sessionScope.userId}">
     <c:redirect url="/index.jsp"/>
