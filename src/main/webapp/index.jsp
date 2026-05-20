@@ -491,3 +491,5 @@
     </script>
 </body>
 </html>
+
+<!-- commit iteration 1: Set up basic layout for index page -->
