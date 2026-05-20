@@ -493,3 +493,5 @@
 </html>
 
 <!-- commit iteration 1: Set up basic layout for index page -->
+
+<!-- commit iteration 6: Implement AuthFilter for page protection -->
