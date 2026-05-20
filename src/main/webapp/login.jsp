@@ -135,3 +135,5 @@
 <!-- commit iteration 7: Add PasswordUtil with BCrypt hashing -->
 
 <!-- commit iteration 12: Implement register-employer JSP template -->
+
+<!-- commit iteration 17: Add navbar styling to header.jsp -->
