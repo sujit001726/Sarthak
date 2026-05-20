@@ -1,0 +1,46 @@
+# GitHub CODEOWNERS file
+# This file designates code owners who are responsible for specific files and directories
+
+# Login and Authentication related files - aakritinepal01
+src/main/webapp/login.jsp @aakritinepal01
+src/main/webapp/register.jsp @aakritinepal01
+src/main/webapp/register-employer.jsp @aakritinepal01
+src/main/webapp/register-seeker.jsp @aakritinepal01
+
+# Homepage and landing page - aakritinepal01
+src/main/webapp/index.jsp @aakritinepal01
+
+# Profile and User Management - aakritinepal01
+src/main/webapp/profile.jsp @aakritinepal01
+
+# Authentication and Security Servlets - aakritinepal01
+src/main/java/**/LoginServlet.java @aakritinepal01
+src/main/java/**/LogoutServlet.java @aakritinepal01
+src/main/java/**/RegisterServlet.java @aakritinepal01
+src/main/java/**/AuthFilter.java @aakritinepal01
+src/main/java/**/PasswordUtil.java @aakritinepal01
+
+# Frontend and UI Components - aakritinepal01
+src/main/webapp/includes/ @aakritinepal01
+src/main/webapp/css/ @aakritinepal01
+src/main/webapp/js/ @aakritinepal01
+
+# Dashboard and Job Market - aakritinepal01
+src/main/webapp/jobseeker-dashboard.jsp @aakritinepal01
+src/main/webapp/job-market.jsp @aakritinepal01
+
+# Messages and Communication - aakritinepal01
+src/main/webapp/messages.jsp @aakritinepal01
+
+# Friends and Network - aakritinepal01
+src/main/webapp/friends.jsp @aakritinepal01
+
+# Error Handling - aakritinepal01
+src/main/webapp/error.jsp @aakritinepal01
+src/main/webapp/error/ @aakritinepal01
+
+# Company Management - aakritinepal01
+src/main/webapp/companies.jsp @aakritinepal01
+
+# Default owner for all other files
+* @sujit001726
