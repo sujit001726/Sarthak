@@ -11,8 +11,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Choose your account type on Sarthak Ã¢â‚¬â€ Nepal's Professional Job Portal.">
-    <title>Join Sarthak Ã¢â‚¬â€ Choose Account Type</title>
+    <meta name="description" content="Choose your account type on Sarthak ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Nepal's Professional Job Portal.">
+    <title>Join Sarthak ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Choose Account Type</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -125,4 +125,4 @@
     </div>
 </body>
 </html>
- 
+  
